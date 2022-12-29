@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <NewGamePlus>New Game +</NewGamePlus>
+
+  <RoyalFavorReward>Allow Royal Favor rewards</RoyalFavorReward>
+  <RoyalFavorRewardDesc>Factions can reward you with Royal Favors</RoyalFavorRewardDesc>
+
+  <GoodwillReward>Allow Goodwill rewards</GoodwillReward>
+  <GoodwillRewardDesc>Factions can reward you with Goodwill</GoodwillRewardDesc>
+
+  <AutoExpandHomeArea>Automatically expand Home area</AutoExpandHomeArea>
+  <AutoExpandHomeAreaDesc>Home area will automatically expand around new constructions.</AutoExpandHomeAreaDesc>
+
+  <AutoRebuild>Automatically rebuild</AutoRebuild>
+  <AutoRebuildDesc>Destroyed structures in the home area will be set to be rebuilt.</AutoRebuildDesc>
+
+  <ShowZone>Display Zones</ShowZone>
+  <ShowZoneDesc>Display zones such as stockpiles, growzones.</ShowZoneDesc>
+
+  <Outfits>Outfits hitpoints</Outfits>
+  <OutfitsDesc>Set default hitpoints for all outfits.</OutfitsDesc>
+
+  <DefaultMedicineSettingsDesc>Chose the default medical settings for each pawn categories</DefaultMedicineSettingsDesc>
+</LanguageData>

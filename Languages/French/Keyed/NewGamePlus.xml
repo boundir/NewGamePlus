@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <NewGamePlus>New Game +</NewGamePlus>
+
+  <RoyalFavordReward>Autoriser les récompenses en faveurs royales</RoyalFavordReward>
+  <RoyalFavordRewardDesc>Les factions pourront proposer des récompenses en faveurs royales</RoyalFavordRewardDesc>
+
+  <GoodwillReward>Accepter de meilleures relations</GoodwillReward>
+  <GoodwillRewardDesc>Les factions pourront proposer des récompenses par l'amélioration de vos relations diplomatiques.</GoodwillRewardDesc>
+
+  <AutoExpandHomeArea>Étendre la zone de base automatiquement</AutoExpandHomeArea>
+  <AutoExpandHomeAreaDesc>La zone de base s'étend automatiquement à la suite de nouvelles constructions.</AutoExpandHomeAreaDesc>
+
+  <AutoRebuild>Reconstruction automatique</AutoRebuild>
+  <AutoRebuildDesc>Les structures détruites dans la zone de base seront automatiquement reconstruites.</AutoRebuildDesc>
+
+  <ShowZone>Affichage des Zones</ShowZone>
+  <ShowZoneDesc>Affichage des zones de type stockage, agricoles.</ShowZoneDesc>
+
+  <Outfits>Equipements</Outfits>
+  <OutfitsDesc>Définir le taux d'usure des tenues.</OutfitsDesc>
+
+  <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales pour chaque catégorie de pions</DefaultMedicineSettingsDesc>
+</LanguageData>

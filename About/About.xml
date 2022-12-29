@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>New Game Plus</name>
+    <author>Boundir</author>
+    <packageId>Boundir.NewGamePlus</packageId>
+    <description>This mod is meant to cut off some of the setup for every new colony you start.</description>
+    <supportedVersions>
+        <li>1.4</li>
+    </supportedVersions>
+    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+            <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=2009463077</steamWorkshopUrl>
+        </li>
+    </modDependencies>
+</ModMetaData>
