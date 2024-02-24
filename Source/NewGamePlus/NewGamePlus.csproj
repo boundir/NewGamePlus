@@ -70,6 +70,7 @@
     <Compile Include="NewGamePlus.cs" />
     <Compile Include="OnGameStart.cs" />
     <Compile Include="Outfits.cs" />
+    <Compile Include="ProductionBills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Utils.cs" />

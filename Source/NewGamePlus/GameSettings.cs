@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
-using HarmonyLib;
 
 namespace Boundir.NewGamePlus
 {
-    [HarmonyPatch]
     public static class GameSettings
     {
-        [HarmonyPatch(typeof(PlaySettings), MethodType.Constructor)]
-        public static void Postfix(PlaySettings __instance)
+        public static void DefaultPlaySettings(PlaySettings __instance)
         {
             __instance.autoHomeArea = NewGamePlus.settings.autoExpandHomeArea;
             __instance.autoRebuild = NewGamePlus.settings.autoRebuild;
@@ -33,6 +25,13 @@ namespace Boundir.NewGamePlus
 
             __instance.defaultCareForColonyPrisoner = NewGamePlus.settings.medicalCarePrisoner;
             __instance.defaultCareForHostileFaction = NewGamePlus.settings.medicalCareHostileFaction;
+
+            __instance.useWorkPriorities = NewGamePlus.settings.workPriorities;
+        }
+
+        public static void OnNewColony(DifficultyDef __instance)
+        {
+            __instance.isCustom = true;
         }
     }
 }

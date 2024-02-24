@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-  <NewGamePlus>New Game +</NewGamePlus>
+    <NewGamePlus>New Game +</NewGamePlus>
 
-  <RoyalFavorReward>Allow Royal Favor rewards</RoyalFavorReward>
-  <RoyalFavorRewardDesc>Factions can reward you with Royal Favors</RoyalFavorRewardDesc>
+    <DefaultGameplaySettings>Default gameplay settings</DefaultGameplaySettings>
+    <DefaultGameplaySettingsDesc>Set the default gameplay settings for new games.</DefaultGameplaySettingsDesc>
 
-  <GoodwillReward>Allow Goodwill rewards</GoodwillReward>
-  <GoodwillRewardDesc>Factions can reward you with Goodwill</GoodwillRewardDesc>
+    <RoyalFavorReward>Allow Royal Favor rewards</RoyalFavorReward>
+    <RoyalFavorRewardDesc>Factions can reward you with Royal Favors.</RoyalFavorRewardDesc>
 
-  <AutoExpandHomeArea>Automatically expand Home area</AutoExpandHomeArea>
-  <AutoExpandHomeAreaDesc>Home area will automatically expand around new constructions.</AutoExpandHomeAreaDesc>
+    <GoodwillReward>Allow Goodwill rewards</GoodwillReward>
+    <GoodwillRewardDesc>Factions can reward you with Goodwill.</GoodwillRewardDesc>
 
-  <AutoRebuild>Automatically rebuild</AutoRebuild>
-  <AutoRebuildDesc>Destroyed structures in the home area will be set to be rebuilt.</AutoRebuildDesc>
+    <AutoExpandHomeArea>Automatically expand Home area</AutoExpandHomeArea>
+    <AutoExpandHomeAreaDesc>Home area will automatically expand around new constructions.</AutoExpandHomeAreaDesc>
 
-  <ShowZone>Display Zones</ShowZone>
-  <ShowZoneDesc>Display zones such as stockpiles, growzones.</ShowZoneDesc>
+    <AutoRebuild>Automatically rebuild</AutoRebuild>
+    <AutoRebuildDesc>Destroyed structures in the home area will be set to be rebuilt.</AutoRebuildDesc>
 
-  <Outfits>Outfits hitpoints</Outfits>
-  <OutfitsDesc>Set default hitpoints for all outfits.</OutfitsDesc>
+    <ShowZone>Display Zones</ShowZone>
+    <ShowZoneDesc>Display zones such as stockpiles, growzones.</ShowZoneDesc>
 
-  <DefaultMedicineSettingsDesc>Chose the default medical settings for each pawn categories</DefaultMedicineSettingsDesc>
+    <ManualWorkPriorities>Manual work priorities</ManualWorkPriorities>
+    <ManualWorkPrioritiesDesc>Colonists will do priority 1 work from left to right, then priority 2 work from left to right, and so on.</ManualWorkPrioritiesDesc>
+
+    <DefaultMedicineSettingsDesc>Chose the default medical settings for each pawn categories.</DefaultMedicineSettingsDesc>
+
+    <DefaultProductionSettings>Default production settings</DefaultProductionSettings>
+    <DefaultProductionSettingsDesc>Set the default production settings for new production bills.</DefaultProductionSettingsDesc>
+
+    <Outfits>Outfits hitpoints</Outfits>
+    <OutfitsDesc>Set default hitpoints for all outfits.</OutfitsDesc>
+
+    <DropOnFloor>Drop on the floor</DropOnFloor>
+    <DropOnFloorDesc>Default bill policy to drop on floor instead of best stockpile.</DropOnFloorDesc>
+
+    <SearchRadius>Bill search radius</SearchRadius>
+    <SearchRadiusDesc>Sets the default search radius for new production bills.</SearchRadiusDesc>
 </LanguageData>

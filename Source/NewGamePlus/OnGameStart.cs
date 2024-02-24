@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Verse;
+﻿using Verse;
 using HarmonyLib;
+using RimWorld;
 
 namespace Boundir.NewGamePlus
 {
@@ -15,6 +11,32 @@ namespace Boundir.NewGamePlus
         {
             Log.Message("New Game Plus loaded.");
             Harmony harmony = new Harmony("RimWorld.Boundir.NewGamePlus");
+
+            harmony.Patch(
+                original: AccessTools.Constructor(type: typeof(PlaySettings)),
+                postfix: new HarmonyMethod(methodType: typeof(GameSettings), methodName: nameof(GameSettings.DefaultPlaySettings))
+            );
+            /*harmony.Patch(
+                original: AccessTools.Constructor(type: typeof(DifficultyDef)),
+                postfix: new HarmonyMethod(methodType: typeof(GameSettings), methodName: nameof(GameSettings.OnNewColony))
+            );*/
+            harmony.Patch(
+                original: AccessTools.Constructor(type: typeof(Faction)),
+                postfix: new HarmonyMethod(methodType: typeof(FactionRewards), methodName: nameof(FactionRewards.SetFactionPreferences))
+            );
+            harmony.Patch(
+                original: AccessTools.Constructor(type: typeof(OutfitDatabase)),
+                postfix: new HarmonyMethod(methodType: typeof(Outfits), methodName: nameof(Outfits.OutfitHitPoints))
+            );
+            harmony.Patch(
+                original: AccessTools.Method(type: typeof(OutfitDatabase), name: nameof(OutfitDatabase.MakeNewOutfit)),
+                postfix: new HarmonyMethod(methodType: typeof(Outfits), methodName: nameof(Outfits.OnNewOutfit))
+            );
+            harmony.Patch(
+                original: AccessTools.Method(type: typeof(BillUtility), name: nameof(BillUtility.MakeNewBill)),
+                postfix: new HarmonyMethod(methodType: typeof(ProductionBills), methodName: nameof(ProductionBills.OnNewBill))
+            );
+
             harmony.PatchAll();
         }
     }

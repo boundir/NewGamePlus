@@ -1,9 +1,4 @@
 ﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
@@ -91,6 +86,42 @@ namespace Boundir.NewGamePlus
 
             Widgets.LabelFit(rect: rectLabel, label: label.Translate());
             MedicalCareUtility.MedicalCareSetter(rect: rectIcon, medCare: ref value);
+
+            list.Gap(gapHeight: DEFAULT_GAP / 2);
+        }
+
+        public static void DescriptiveBillSearchRadiusSlider(this Listing_Standard list, string label, string description, ref float value, float min = 0f, float max = 100f, float tabSpace = DEFAULT_TAB_SPACE)
+        {
+            TextAnchor anchor = Text.Anchor;
+
+            Rect rect = list.GetRect(height: Text.LineHeight + list.verticalSpacing);
+
+            Text.Font = GameFont.Small;
+            GUI.color = Color.white;
+
+            Text.Anchor = TextAnchor.MiddleLeft;
+            Widgets.Label(rect: rect, label: label.Translate());
+
+            Text.Anchor = TextAnchor.MiddleRight;
+            string text = ((value == 999f) ? "Unlimited".TranslateSimple() : value.ToString("F0"));
+            Widgets.Label(rect, "IngredientSearchRadius".Translate() + ": " + text);
+
+            Text.Anchor = anchor;
+
+            Text.Font = GameFont.Tiny;
+            list.ColumnWidth -= tabSpace;
+            GUI.color = Color.gray;
+            list.Label(label: description.Translate());
+            Text.Font = GameFont.Small;
+            list.ColumnWidth += tabSpace;
+            GUI.color = Color.white;
+
+            value = list.Slider(val: (value > 100f) ? 100f : value, min: min, max: max);
+
+            if (value >= 100f)
+            {
+                value = 999f;
+            }
 
             list.Gap(gapHeight: DEFAULT_GAP);
         }
