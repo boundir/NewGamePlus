@@ -79,15 +79,22 @@ namespace Boundir.NewGamePlus
 
         public static void MedicalCareSelector(this Listing_Standard list, string label, ref MedicalCareCategory value)
         {
-            Rect rect = list.GetRect(height: Text.LineHeight + list.verticalSpacing);
+            Rect rectBase = list.GetRect(height: Text.LineHeight + list.verticalSpacing);
+            Rect rect2 = new Rect(rectBase.x, list.CurHeight, rectBase.width, 28f);
+            Rect rect3 = new Rect(rectBase.x, list.CurHeight, 230f, 28f);
+            Rect rect4 = new Rect(rectBase.x + 230f, list.CurHeight, 140f, 28f);
 
-            Rect rectLabel = rect.LeftPartPixels(width: 200f);
-            Rect rectIcon = new Rect(x: rect.x + 225f, y: rect.y, width: 140f, height: rect.height);
+            if (Mouse.IsOver(rect2))
+            {
+                Widgets.DrawLightHighlight(rect2);
+            }
 
-            Widgets.LabelFit(rect: rectLabel, label: label.Translate());
-            MedicalCareUtility.MedicalCareSetter(rect: rectIcon, medCare: ref value);
+            TooltipHandler.TipRegionByKey(rect2, label + "Desc");
+            Widgets.LabelFit(rect3, label.Translate());
 
-            list.Gap(gapHeight: DEFAULT_GAP / 2);
+            MedicalCareUtility.MedicalCareSetter(rect: rect4, medCare: ref value);
+
+            list.Gap(gapHeight: DEFAULT_GAP);
         }
 
         public static void DescriptiveBillSearchRadiusSlider(this Listing_Standard list, string label, string description, ref float value, float min = 0f, float max = 100f, float tabSpace = DEFAULT_TAB_SPACE)

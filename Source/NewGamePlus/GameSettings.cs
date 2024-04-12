@@ -12,19 +12,27 @@ namespace Boundir.NewGamePlus
             __instance.showZones = NewGamePlus.settings.showZones;
 
             // Medical Care
-            __instance.defaultCareForColonyHumanlike = NewGamePlus.settings.medicalCareColonist;
-            __instance.defaultCareForColonyAnimal = NewGamePlus.settings.medicalCareColonyAnimal;
+            __instance.defaultCareForColonist = NewGamePlus.settings.medicalCareColonist;
+            __instance.defaultCareForPrisoner = NewGamePlus.settings.medicalCarePrisoner;
+            __instance.defaultCareForTamedAnimal = NewGamePlus.settings.medicalCareColonyAnimal;
 
             if (ModsConfig.IdeologyActive)
             {
-                __instance.defaultCareForColonySlave = NewGamePlus.settings.medicalCareSlave;
+                __instance.defaultCareForSlave = NewGamePlus.settings.medicalCareSlave;
             }
 
-            __instance.defaultCareForNeutralFaction = NewGamePlus.settings.medicalCareNeutralFaction;
-            __instance.defaultCareForNeutralAnimal = NewGamePlus.settings.medicalCareNeutralAnimal;
+            if (ModsConfig.AnomalyActive)
+            {
+                __instance.defaultCareForEntities = NewGamePlus.settings.medicalCareEntities;
+                __instance.defaultCareForGhouls = NewGamePlus.settings.medicalCareGhouls;
+            }
 
-            __instance.defaultCareForColonyPrisoner = NewGamePlus.settings.medicalCarePrisoner;
+            __instance.defaultCareForFriendlyFaction = NewGamePlus.settings.medicalCareFriendlyFaction;
+            __instance.defaultCareForNeutralFaction = NewGamePlus.settings.medicalCareNeutralFaction;
             __instance.defaultCareForHostileFaction = NewGamePlus.settings.medicalCareHostileFaction;
+
+            __instance.defaultCareForNoFaction = NewGamePlus.settings.medicalCareNoFaction;
+            __instance.defaultCareForWildlife = NewGamePlus.settings.medicalCareWildlife;
 
             __instance.useWorkPriorities = NewGamePlus.settings.workPriorities;
         }
