@@ -42,7 +42,7 @@ namespace Boundir.NewGamePlus
             Scribe_Values.Look(value: ref autoRebuild, label: "autoRebuild", defaultValue: false);
             Scribe_Values.Look(value: ref showZones, label: "showZones", defaultValue: true);
             Scribe_Values.Look(value: ref workPriorities, label: "workPriorities", defaultValue: false);
-            Scribe_Values.Look(value: ref outfitsHitpoints, label: "outfitsHitpoints", defaultValue: new FloatRange(min: 0f, max: 100f));
+            Scribe_Values.Look(value: ref outfitsHitpoints, label: "outfitsHitpoints", defaultValue: FloatRange.ZeroToOne);
             Scribe_Values.Look(value: ref medicalCareColonist, label: "medicalCareColonist", defaultValue: MedicalCareCategory.Best);
             Scribe_Values.Look(value: ref medicalCareColonyAnimal, label: "medicalCareColonyAnimal", defaultValue: MedicalCareCategory.HerbalOrWorse);
             Scribe_Values.Look(value: ref medicalCarePrisoner, label: "medicalCarePrisoner", defaultValue: MedicalCareCategory.HerbalOrWorse);
@@ -81,7 +81,7 @@ namespace Boundir.NewGamePlus
 
             list.DescriptiveSection(label: "DefaultProductionSettings", description: "DefaultProductionSettingsDesc");
             list.DescriptiveCheckbox(label: "DropOnFloor", description: "DropOnFloorDesc", value: ref dropOnFloor, tabSpace: tabSpace);
-            list.DescriptiveBillSearchRadiusSlider(label: "SearchRadius", description: "SearchRadiusDesc", value: ref billSearchRadius, min: 3f);
+            list.DescriptiveBillSearchRadiusSlider(label: "SearchRadius", description: "SearchRadiusDesc", value: ref billSearchRadius);
             list.DescriptiveFloatRangeSliders(label: "Outfits", description: "OutfitsDesc", value: ref outfitsHitpoints, tabSpace: tabSpace);
 
             list.GapLine();
