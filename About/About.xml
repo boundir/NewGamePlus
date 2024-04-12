@@ -6,6 +6,7 @@
     <description>This mod is meant to cut off some of the setup for every new colony you start.</description>
     <supportedVersions>
         <li>1.4</li>
+        <li>1.5</li>
     </supportedVersions>
     <modDependencies>
         <li>

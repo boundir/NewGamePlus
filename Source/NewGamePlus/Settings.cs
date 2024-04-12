@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Verse;
 using RimWorld;
-using System.Collections.Generic;
 
 namespace Boundir.NewGamePlus
 {
@@ -24,14 +23,16 @@ namespace Boundir.NewGamePlus
         public MedicalCareCategory medicalCareColonyAnimal;
         public MedicalCareCategory medicalCarePrisoner;
         public MedicalCareCategory medicalCareSlave;
+        public MedicalCareCategory medicalCareFriendlyFaction;
         public MedicalCareCategory medicalCareNeutralFaction;
-        public MedicalCareCategory medicalCareNeutralAnimal;
         public MedicalCareCategory medicalCareHostileFaction;
+        public MedicalCareCategory medicalCareNoFaction;
+        public MedicalCareCategory medicalCareEntities;
+        public MedicalCareCategory medicalCareGhouls;
+        public MedicalCareCategory medicalCareWildlife;
 
         public bool dropOnFloor;
         public float billSearchRadius;
-
-        public List<Outfit> listOutfits;
 
         public override void ExposeData()
         {
@@ -42,30 +43,43 @@ namespace Boundir.NewGamePlus
             Scribe_Values.Look(value: ref autoRebuild, label: "autoRebuild", defaultValue: false);
             Scribe_Values.Look(value: ref showZones, label: "showZones", defaultValue: true);
             Scribe_Values.Look(value: ref workPriorities, label: "workPriorities", defaultValue: false);
-            Scribe_Values.Look(value: ref outfitsHitpoints, label: "outfitsHitpoints", defaultValue: new FloatRange(min: 0f, max: 100f));
-            Scribe_Values.Look(value: ref medicalCareColonist, label: "medicalCareColonist", defaultValue: MedicalCareCategory.Best);
-            Scribe_Values.Look(value: ref medicalCareColonyAnimal, label: "medicalCareColonyAnimal", defaultValue: MedicalCareCategory.HerbalOrWorse);
-            Scribe_Values.Look(value: ref medicalCarePrisoner, label: "medicalCarePrisoner", defaultValue: MedicalCareCategory.HerbalOrWorse);
-            Scribe_Values.Look(value: ref medicalCareSlave, label: "medicalCareSlave", defaultValue: MedicalCareCategory.HerbalOrWorse);
-            Scribe_Values.Look(value: ref medicalCareNeutralFaction, label: "medicalCareNeutralFaction", defaultValue: MedicalCareCategory.HerbalOrWorse);
-            Scribe_Values.Look(value: ref medicalCareNeutralAnimal, label: "medicalCareNeutralAnimal", defaultValue: MedicalCareCategory.HerbalOrWorse);
-            Scribe_Values.Look(value: ref medicalCareHostileFaction, label: "medicalCareHostileFaction", defaultValue: MedicalCareCategory.HerbalOrWorse);
+
+            // Medical
+            Scribe_Values.Look(value: ref medicalCareColonist, label: "MedGroupColonists", defaultValue: MedicalCareCategory.Best);
+            Scribe_Values.Look(value: ref medicalCarePrisoner, label: "MedGroupPrisoners", defaultValue: MedicalCareCategory.HerbalOrWorse);
+            Scribe_Values.Look(value: ref medicalCareSlave, label: "MedGroupSlaves", defaultValue: MedicalCareCategory.HerbalOrWorse);
+            Scribe_Values.Look(value: ref medicalCareGhouls, label: "MedGroupGhouls", defaultValue: MedicalCareCategory.NoMeds);
+            Scribe_Values.Look(value: ref medicalCareColonyAnimal, label: "MedGroupTamedAnimals", defaultValue: MedicalCareCategory.HerbalOrWorse);
+
+            Scribe_Values.Look(value: ref medicalCareFriendlyFaction, label: "MedGroupFriendlyFaction", defaultValue: MedicalCareCategory.HerbalOrWorse);
+            Scribe_Values.Look(value: ref medicalCareNeutralFaction, label: "MedGroupNeutralFaction", defaultValue: MedicalCareCategory.HerbalOrWorse);
+            Scribe_Values.Look(value: ref medicalCareHostileFaction, label: "MedGroupHostileFaction", defaultValue: MedicalCareCategory.HerbalOrWorse);
+
+            Scribe_Values.Look(value: ref medicalCareNoFaction, label: "MedGroupNoFaction", defaultValue: MedicalCareCategory.HerbalOrWorse);
+            Scribe_Values.Look(value: ref medicalCareEntities, label: "medicalCareEntities", defaultValue: MedicalCareCategory.NoMeds);
+            Scribe_Values.Look(value: ref medicalCareWildlife, label: "medicalCareWildlife", defaultValue: MedicalCareCategory.HerbalOrWorse);
+
+            // Production
             Scribe_Values.Look(value: ref dropOnFloor, label: "dropOnFloor", defaultValue: false);
             Scribe_Values.Look(value: ref billSearchRadius, label: "billSearchRadius", defaultValue: 999f);
+            Scribe_Values.Look(value: ref outfitsHitpoints, label: "outfitsHitpoints", defaultValue: FloatRange.ZeroToOne);
         }
 
         public void DoWindowContents(Rect rect)
         {
             float columnWidth = rect.width / 2 - 40f;
             float tabSpace = 34f;
+            float windowHeight = 950f;
 
             Listing_Standard list = new Listing_Standard
             {
                 ColumnWidth = columnWidth
             };
 
-            Rect listRect = new Rect(x: 0, y: 0, width: rect.width - 20f, height: 700f);
+
+            Rect listRect = new Rect(x: 0, y: 0, width: rect.width - 20f, height: windowHeight);
             Widgets.BeginScrollView(outRect: rect, scrollPosition: ref scrollPositionVector, viewRect: listRect, showScrollbars: true);
+            rect.height = windowHeight;
             list.Begin(rect);
 
             list.DescriptiveSection(label: "DefaultGameplaySettings", description: "DefaultGameplaySettingsDesc");
@@ -81,24 +95,43 @@ namespace Boundir.NewGamePlus
 
             list.DescriptiveSection(label: "DefaultProductionSettings", description: "DefaultProductionSettingsDesc");
             list.DescriptiveCheckbox(label: "DropOnFloor", description: "DropOnFloorDesc", value: ref dropOnFloor, tabSpace: tabSpace);
-            list.DescriptiveBillSearchRadiusSlider(label: "SearchRadius", description: "SearchRadiusDesc", value: ref billSearchRadius, min: 3f);
+            list.DescriptiveBillSearchRadiusSlider(label: "SearchRadius", description: "SearchRadiusDesc", value: ref billSearchRadius);
             list.DescriptiveFloatRangeSliders(label: "Outfits", description: "OutfitsDesc", value: ref outfitsHitpoints, tabSpace: tabSpace);
 
             list.GapLine();
 
-            list.DescriptiveSection(label: "DefaultMedicineSettings", description: "DefaultMedicineSettingsDesc");
-            list.MedicalCareSelector(label: "MedGroupColonist", value: ref medicalCareColonist);
-            list.MedicalCareSelector(label: "MedGroupColonyAnimal", value: ref medicalCareColonyAnimal);
-            list.MedicalCareSelector(label: "MedGroupImprisonedColonist", value: ref medicalCarePrisoner);
+            list.DescriptiveSection(label: "DefaultMedicineSettings", description: "DefaultMedicineSettingsDesc", tabSpace: 0f);
+
+            list.MedicalCareSelector(label: "MedGroupColonists", value: ref medicalCareColonist);
+            list.MedicalCareSelector(label: "MedGroupPrisoners", value: ref medicalCarePrisoner);
 
             if (ModsConfig.IdeologyActive)
             {
-                list.MedicalCareSelector(label: "MedGroupEnslavedColonist", value: ref medicalCareSlave);
+                list.MedicalCareSelector(label: "MedGroupSlaves", value: ref medicalCareSlave);
             }
 
+            if (ModsConfig.AnomalyActive)
+            {
+                list.MedicalCareSelector(label: "MedGroupGhouls", value: ref medicalCareGhouls);
+            }
+
+            list.MedicalCareSelector(label: "MedGroupTamedAnimals", value: ref medicalCareColonyAnimal);
+
+            list.Gap();
+
+            list.MedicalCareSelector(label: "MedGroupFriendlyFaction", value: ref medicalCareFriendlyFaction);
             list.MedicalCareSelector(label: "MedGroupNeutralFaction", value: ref medicalCareNeutralFaction);
-            list.MedicalCareSelector(label: "MedGroupNeutralAnimal", value: ref medicalCareNeutralAnimal);
             list.MedicalCareSelector(label: "MedGroupHostileFaction", value: ref medicalCareHostileFaction);
+
+            list.Gap();
+
+            list.MedicalCareSelector(label: "MedGroupNoFaction", value: ref medicalCareNoFaction);
+            list.MedicalCareSelector(label: "MedGroupWildlife", value: ref medicalCareWildlife);
+
+            if (ModsConfig.AnomalyActive)
+            {
+                list.MedicalCareSelector(label: "MedGroupEntities", value: ref medicalCareEntities);
+            }
 
             list.End();
 

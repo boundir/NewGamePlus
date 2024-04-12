@@ -6,15 +6,15 @@ namespace Boundir.NewGamePlus
     {
         public static void OutfitHitPoints(OutfitDatabase __instance)
         {
-            foreach (Outfit outfit in __instance.AllOutfits)
+            foreach (ApparelPolicy outfit in __instance.AllOutfits)
             {
                 outfit.filter.AllowedHitPointsPercents = NewGamePlus.settings.outfitsHitpoints;
             }
         }
 
-        public static void OnNewOutfit(ref Outfit __result)
+        public static void OnNewOutfit(ref ApparelPolicy __result)
         {
-            if (__result is Outfit outfit)
+            if (__result is ApparelPolicy outfit)
             {
                 outfit.filter.AllowedHitPointsPercents = NewGamePlus.settings.outfitsHitpoints;
             }
