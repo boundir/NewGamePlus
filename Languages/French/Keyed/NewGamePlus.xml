@@ -21,4 +21,6 @@
   <OutfitsDesc>Définir le taux d'usure des tenues.</OutfitsDesc>
 
   <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales pour chaque catégorie de pions</DefaultMedicineSettingsDesc>
+
+  <ThreatResponse>Réponse aux menaces</ThreatResponse>
 </LanguageData>

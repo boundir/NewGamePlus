@@ -36,10 +36,5 @@ namespace Boundir.NewGamePlus
 
             __instance.useWorkPriorities = NewGamePlus.settings.workPriorities;
         }
-
-        public static void OnNewColony(DifficultyDef __instance)
-        {
-            __instance.isCustom = true;
-        }
     }
 }

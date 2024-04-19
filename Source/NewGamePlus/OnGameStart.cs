@@ -16,10 +16,6 @@ namespace Boundir.NewGamePlus
                 original: AccessTools.Constructor(type: typeof(PlaySettings)),
                 postfix: new HarmonyMethod(methodType: typeof(GameSettings), methodName: nameof(GameSettings.DefaultPlaySettings))
             );
-            /*harmony.Patch(
-                original: AccessTools.Constructor(type: typeof(DifficultyDef)),
-                postfix: new HarmonyMethod(methodType: typeof(GameSettings), methodName: nameof(GameSettings.OnNewColony))
-            );*/
             harmony.Patch(
                 original: AccessTools.Constructor(type: typeof(Faction)),
                 postfix: new HarmonyMethod(methodType: typeof(FactionRewards), methodName: nameof(FactionRewards.SetFactionPreferences))
@@ -35,6 +31,10 @@ namespace Boundir.NewGamePlus
             harmony.Patch(
                 original: AccessTools.Method(type: typeof(BillUtility), name: nameof(BillUtility.MakeNewBill)),
                 postfix: new HarmonyMethod(methodType: typeof(ProductionBills), methodName: nameof(ProductionBills.OnNewBill))
+            );
+            harmony.Patch(
+                original: AccessTools.Method(type: typeof(StoryWatcher_PopAdaptation), name: nameof(StoryWatcher_PopAdaptation.Notify_PawnEvent)),
+                postfix: new HarmonyMethod(methodType: typeof(OnPawnJoin), nameof(OnPawnJoin.HostilityResponse))
             );
 
             harmony.PatchAll();

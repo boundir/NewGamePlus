@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 using RimWorld;
+using System;
 
 namespace Boundir.NewGamePlus
 {
@@ -8,31 +9,31 @@ namespace Boundir.NewGamePlus
     {
         private static Vector2 scrollPositionVector;
 
-        public bool allowRoyalFavorRewards;
-        public bool allowGoodwillRewards;
-        public bool autoExpandHomeArea;
-        public bool autoRebuild;
-        public bool showZones;
-        public bool workPriorities;
+        public bool allowRoyalFavorRewards = true;
+        public bool allowGoodwillRewards = true;
+        public bool autoExpandHomeArea = true;
+        public bool autoRebuild = false;
+        public bool showZones = true;
+        public bool workPriorities = false;
 
-        public HostilityResponseMode threatResponseMode;
+        public HostilityResponseMode threatResponseMode = HostilityResponseMode.Flee;
 
-        public FloatRange outfitsHitpoints;
+        public FloatRange outfitsHitpoints = FloatRange.ZeroToOne;
 
-        public MedicalCareCategory medicalCareColonist;
-        public MedicalCareCategory medicalCareColonyAnimal;
-        public MedicalCareCategory medicalCarePrisoner;
-        public MedicalCareCategory medicalCareSlave;
-        public MedicalCareCategory medicalCareFriendlyFaction;
-        public MedicalCareCategory medicalCareNeutralFaction;
-        public MedicalCareCategory medicalCareHostileFaction;
-        public MedicalCareCategory medicalCareNoFaction;
-        public MedicalCareCategory medicalCareEntities;
-        public MedicalCareCategory medicalCareGhouls;
-        public MedicalCareCategory medicalCareWildlife;
+        public MedicalCareCategory medicalCareColonist = MedicalCareCategory.Best;
+        public MedicalCareCategory medicalCareColonyAnimal = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCarePrisoner = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCareSlave = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCareFriendlyFaction = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCareNeutralFaction = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCareHostileFaction = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCareNoFaction = MedicalCareCategory.HerbalOrWorse;
+        public MedicalCareCategory medicalCareEntities = MedicalCareCategory.NoMeds;
+        public MedicalCareCategory medicalCareGhouls = MedicalCareCategory.NoMeds;
+        public MedicalCareCategory medicalCareWildlife = MedicalCareCategory.HerbalOrWorse;
 
-        public bool dropOnFloor;
-        public float billSearchRadius;
+        public bool dropOnFloor = false;
+        public float billSearchRadius = 999f;
 
         public override void ExposeData()
         {
@@ -43,6 +44,7 @@ namespace Boundir.NewGamePlus
             Scribe_Values.Look(value: ref autoRebuild, label: "autoRebuild", defaultValue: false);
             Scribe_Values.Look(value: ref showZones, label: "showZones", defaultValue: true);
             Scribe_Values.Look(value: ref workPriorities, label: "workPriorities", defaultValue: false);
+            Scribe_Values.Look(value: ref threatResponseMode, label: "threadResponseMode", defaultValue: HostilityResponseMode.Flee);
 
             // Medical
             Scribe_Values.Look(value: ref medicalCareColonist, label: "MedGroupColonists", defaultValue: MedicalCareCategory.Best);
@@ -76,7 +78,6 @@ namespace Boundir.NewGamePlus
                 ColumnWidth = columnWidth
             };
 
-
             Rect listRect = new Rect(x: 0, y: 0, width: rect.width - 20f, height: windowHeight);
             Widgets.BeginScrollView(outRect: rect, scrollPosition: ref scrollPositionVector, viewRect: listRect, showScrollbars: true);
             rect.height = windowHeight;
@@ -88,7 +89,9 @@ namespace Boundir.NewGamePlus
             list.DescriptiveCheckbox(label: "ShowZone", description: "ShowZoneDesc", value: ref showZones, tabSpace: tabSpace);
             list.DescriptiveCheckbox(label: "RoyalFavorReward", description: "RoyalFavorRewardDesc", value: ref allowRoyalFavorRewards, tabSpace: tabSpace);
             list.DescriptiveCheckbox(label: "GoodwillReward", description: "GoodwillRewardDesc", value: ref allowGoodwillRewards, tabSpace: tabSpace);
-            list.DescriptiveCheckbox(label: "ManualWorkPriorities", description: "ManualWorkPrioritiesDesc", value: ref workPriorities);
+            list.DescriptiveCheckbox(label: "ManualWorkPriorities", description: "ManualWorkPrioritiesDesc", value: ref workPriorities, gap: 0f);
+
+            list.HostilityResponseSelector(threatResponseMode: ref threatResponseMode, label: "ThreatResponse", description: "HostilityReponseTip");
 
             list.NewColumn();
             list.Indent();
@@ -100,7 +103,7 @@ namespace Boundir.NewGamePlus
 
             list.GapLine();
 
-            list.DescriptiveSection(label: "DefaultMedicineSettings", description: "DefaultMedicineSettingsDesc", tabSpace: 0f);
+            list.DescriptiveSection(label: "DefaultMedicineSettings", description: "DefaultMedicineSettingsDesc", tabSpace: tabSpace, gap: 0f);
 
             list.MedicalCareSelector(label: "MedGroupColonists", value: ref medicalCareColonist);
             list.MedicalCareSelector(label: "MedGroupPrisoners", value: ref medicalCarePrisoner);

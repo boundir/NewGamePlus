@@ -36,4 +36,6 @@
 
     <SearchRadius>Bill search radius</SearchRadius>
     <SearchRadiusDesc>Sets the default search radius for new production bills.</SearchRadiusDesc>
+
+    <ThreatResponse>Pawn threat response</ThreatResponse>
 </LanguageData>

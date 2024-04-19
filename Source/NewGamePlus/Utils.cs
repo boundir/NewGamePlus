@@ -1,6 +1,8 @@
 ﻿using RimWorld;
+using System;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace Boundir.NewGamePlus
 {
@@ -9,7 +11,9 @@ namespace Boundir.NewGamePlus
         public const float DEFAULT_GAP = 15f;
         public const float DEFAULT_TAB_SPACE = 34f;
 
-        public static void DescriptiveCheckbox(this Listing_Standard list, string label, string description, ref bool value, float tabSpace = DEFAULT_TAB_SPACE)
+        private static bool hostilityResponsePainting;
+
+        public static void DescriptiveCheckbox(this Listing_Standard list, string label, string description, ref bool value, float tabSpace = DEFAULT_TAB_SPACE, float gap = DEFAULT_GAP)
         {
             Text.Font = GameFont.Small;
             GUI.color = Color.white;
@@ -23,7 +27,7 @@ namespace Boundir.NewGamePlus
             list.ColumnWidth += tabSpace;
             GUI.color = Color.white;
 
-            list.Gap(gapHeight: DEFAULT_GAP);
+            list.Gap(gapHeight: gap);
         }
 
         public static void DescriptiveFloatRangeSliders(this Listing_Standard list, string label, string description, ref FloatRange value, float tabSpace = DEFAULT_TAB_SPACE)
@@ -61,7 +65,7 @@ namespace Boundir.NewGamePlus
             list.Gap(gapHeight: DEFAULT_GAP);
         }
 
-        public static void DescriptiveSection(this Listing_Standard list, string label, string description, float tabSpace = DEFAULT_TAB_SPACE)
+        public static void DescriptiveSection(this Listing_Standard list, string label, string description, float tabSpace = DEFAULT_TAB_SPACE, float gap = DEFAULT_GAP)
         {
             Text.Font = GameFont.Medium;
             list.Label(label.Translate());
@@ -74,7 +78,7 @@ namespace Boundir.NewGamePlus
             list.ColumnWidth += tabSpace;
             GUI.color = Color.white;
 
-            list.Gap(gapHeight: DEFAULT_GAP);
+            list.Gap(gapHeight: gap);
         }
 
         public static void MedicalCareSelector(this Listing_Standard list, string label, ref MedicalCareCategory value)
@@ -95,6 +99,73 @@ namespace Boundir.NewGamePlus
             MedicalCareUtility.MedicalCareSetter(rect: rect4, medCare: ref value);
 
             list.Gap(gapHeight: DEFAULT_GAP);
+        }
+
+        public static void HostilityResponseSelector(this Listing_Standard list, ref HostilityResponseMode threatResponseMode, string label, string description, float tabSpace = DEFAULT_TAB_SPACE)
+        {
+            Text.Font = GameFont.Small;
+            GUI.color = Color.white;
+
+            float hostilitySelectorWidth = list.ColumnWidth - (Enum.GetValues(typeof(HostilityResponseMode)).Length * 24f);
+
+            Rect rectBase = list.GetRect(height: Text.LineHeight + list.verticalSpacing);
+            Rect rect = new Rect(x: hostilitySelectorWidth, y: list.CurHeight, width: 24f, height: 24f);
+            Rect rectLabel = new Rect(rectBase.x, list.CurHeight, width: hostilitySelectorWidth, height: Text.LineHeight + list.verticalSpacing);
+            Widgets.LabelFit(rectLabel, label.Translate() + ": " + threatResponseMode);
+
+            foreach (HostilityResponseMode hostilityResponseMode in Enum.GetValues(typeof(HostilityResponseMode)))
+            {
+                Widgets.DrawHighlightIfMouseover(rect);
+                MouseoverSounds.DoRegion(rect);
+                GUI.DrawTexture(rect, hostilityResponseMode.GetIcon());
+                Widgets.DraggableResult draggableResult = Widgets.ButtonInvisibleDraggable(rect);
+
+                if (draggableResult == Widgets.DraggableResult.Dragged)
+                {
+                    hostilityResponsePainting = true;
+                }
+
+                bool draggableResultPressed;
+                if (draggableResult != Widgets.DraggableResult.Pressed)
+                {
+                    draggableResultPressed = draggableResult == Widgets.DraggableResult.DraggedThenPressed;
+                }
+                else
+                {
+                    draggableResultPressed = true;
+                }
+
+
+                if ((hostilityResponsePainting && Mouse.IsOver(rect) && threatResponseMode != hostilityResponseMode) || draggableResultPressed)
+                {
+                    threatResponseMode = hostilityResponseMode;
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                }
+
+                if (threatResponseMode == hostilityResponseMode)
+                {
+                    Widgets.DrawBox(rect, 2);
+                }
+
+                if (Mouse.IsOver(rect))
+                {
+                    TooltipHandler.TipRegion(rect, hostilityResponseMode.GetLabel());
+                }
+
+                rect.x += rect.width;
+            }
+
+            list.Gap(gapHeight: 30f);
+            Text.Font = GameFont.Tiny;
+            list.ColumnWidth -= tabSpace;
+            GUI.color = Color.gray;
+            list.Label(label: description.Translate());
+            Text.Font = GameFont.Small;
+            list.ColumnWidth += tabSpace;
+            GUI.color = Color.white;
+
+            list.Gap(gapHeight: DEFAULT_GAP);
+
         }
 
         public static void DescriptiveBillSearchRadiusSlider(this Listing_Standard list, string label, string description, ref float value, float min = 0f, float max = 100f, float tabSpace = DEFAULT_TAB_SPACE)
