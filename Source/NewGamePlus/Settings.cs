@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Verse;
 using RimWorld;
-using System;
 
 namespace Boundir.NewGamePlus
 {
@@ -19,6 +18,11 @@ namespace Boundir.NewGamePlus
         public HostilityResponseMode threatResponseMode = HostilityResponseMode.Flee;
 
         public FloatRange outfitsHitpoints = FloatRange.ZeroToOne;
+
+        // public List<FoodPolicy> foodRestrictionList = new List<FoodPolicy>();
+        // public List<DrugPolicy> drugRestrictionList = new List<DrugPolicy>();
+        // public List<ApparelPolicy> apparelRestrictionList = new List<ApparelPolicy>();
+        // public List<ReadingPolicy> bookRestrictionList = new List<ReadingPolicy>();
 
         public MedicalCareCategory medicalCareColonist = MedicalCareCategory.Best;
         public MedicalCareCategory medicalCareColonyAnimal = MedicalCareCategory.HerbalOrWorse;
