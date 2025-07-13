@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-  <NewGamePlus>New Game +</NewGamePlus>
+    <NewGamePlus>New Game +</NewGamePlus>
 
-  <RoyalFavordReward>Autoriser les récompenses en faveurs royales</RoyalFavordReward>
-  <RoyalFavordRewardDesc>Les factions pourront proposer des récompenses en faveurs royales</RoyalFavordRewardDesc>
+    <DefaultGameplaySettings>Options de jouabilité par défaut</DefaultGameplaySettings>
+    <DefaultGameplaySettingsDesc>Définir les options de jouabilité par défaut pour toute future nouvelle partie.</DefaultGameplaySettingsDesc>
 
-  <GoodwillReward>Accepter de meilleures relations</GoodwillReward>
-  <GoodwillRewardDesc>Les factions pourront proposer des récompenses par l'amélioration de vos relations diplomatiques.</GoodwillRewardDesc>
+    <RoyalFavorReward>Autoriser les récompenses en faveurs royales</RoyalFavorReward>
+    <RoyalFavorRewardDesc>Les factions pourront proposer des récompenses en faveurs royales</RoyalFavorRewardDesc>
 
-  <AutoExpandHomeArea>Étendre la zone de base automatiquement</AutoExpandHomeArea>
-  <AutoExpandHomeAreaDesc>La zone de base s'étend automatiquement à la suite de nouvelles constructions.</AutoExpandHomeAreaDesc>
+    <GoodwillReward>Accepter de meilleures relations</GoodwillReward>
+    <GoodwillRewardDesc>Les factions pourront proposer des récompenses par l'amélioration de vos relations diplomatiques.</GoodwillRewardDesc>
 
-  <AutoRebuild>Reconstruction automatique</AutoRebuild>
-  <AutoRebuildDesc>Les structures détruites dans la zone de base seront automatiquement reconstruites.</AutoRebuildDesc>
+    <AutoExpandHomeArea>Étendre la zone de base automatiquement</AutoExpandHomeArea>
+    <AutoExpandHomeAreaDesc>La zone de base s'étend automatiquement à la suite de nouvelles constructions.</AutoExpandHomeAreaDesc>
 
-  <ShowZone>Affichage des Zones</ShowZone>
-  <ShowZoneDesc>Affichage des zones de type stockage, agricoles.</ShowZoneDesc>
+    <AutoRebuild>Reconstruction automatique</AutoRebuild>
+    <AutoRebuildDesc>Les structures détruites dans la zone de base seront automatiquement reconstruites.</AutoRebuildDesc>
 
-  <Outfits>Equipements</Outfits>
-  <OutfitsDesc>Définir le taux d'usure des tenues.</OutfitsDesc>
+    <ShowZone>Affichage des Zones</ShowZone>
+    <ShowZoneDesc>Affichage des zones de type stockage, agricoles.</ShowZoneDesc>
 
-  <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales pour chaque catégorie de pions</DefaultMedicineSettingsDesc>
+    <ManualWorkPriorities>Priorités manuelles</ManualWorkPriorities>
+    <ManualWorkPrioritiesDesc>Les colons effectueront en premier les tâches de priorité 1, de gauche à droite, puis les tâches de priorité 2 de gauche à droite, etc.</ManualWorkPrioritiesDesc>
 
-  <ThreatResponse>Réponse aux menaces</ThreatResponse>
+    <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales pour chaque catégorie de pions</DefaultMedicineSettingsDesc>
+
+    <DefaultProductionSettings>Options de production par défaut</DefaultProductionSettings>
+    <DefaultProductionSettingsDesc>Définir les options de production pour toute nouvelle commande.</DefaultProductionSettingsDesc>
+
+    <Outfits>Equipements</Outfits>
+    <OutfitsDesc>Définir le taux d'usure des tenues.</OutfitsDesc>
+
+    <DropOnFloor>Déposer au sol</DropOnFloor>
+    <DropOnFloorDesc>Déposer au sol toute nouvelle command par défaut.</DropOnFloorDesc>
+
+    <SearchRadius>Rayon de recherche des commandes</SearchRadius>
+    <SearchRadiusDesc>Définir le rayon de recherche de toute nouvelle commande de production.</SearchRadiusDesc>
+
+    <ThreatResponse>Réponse aux menaces</ThreatResponse>
 </LanguageData>
