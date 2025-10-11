@@ -20,6 +20,9 @@
     <ShowZone>Display Zones</ShowZone>
     <ShowZoneDesc>Display zones such as stockpiles, growzones.</ShowZoneDesc>
 
+    <ShowExpandingLandmarks>Display Landmarks</ShowExpandingLandmarks>
+    <ShowExpandingLandmarksDesc>Display landmarks on the world map.</ShowExpandingLandmarksDesc>
+
     <ManualWorkPriorities>Manual work priorities</ManualWorkPriorities>
     <ManualWorkPrioritiesDesc>Colonists will do priority 1 work from left to right, then priority 2 work from left to right, and so on.</ManualWorkPrioritiesDesc>
 
