@@ -13,6 +13,7 @@ namespace Boundir.NewGamePlus
         public bool autoExpandHomeArea = true;
         public bool autoRebuild = false;
         public bool showZones = true;
+        public bool showExpandingLandmarks = false;
         public bool workPriorities = false;
 
         public HostilityResponseMode threatResponseMode = HostilityResponseMode.Flee;
@@ -47,6 +48,7 @@ namespace Boundir.NewGamePlus
             Scribe_Values.Look(value: ref autoExpandHomeArea, label: "autoExpandHomeArea", defaultValue: true);
             Scribe_Values.Look(value: ref autoRebuild, label: "autoRebuild", defaultValue: false);
             Scribe_Values.Look(value: ref showZones, label: "showZones", defaultValue: true);
+            Scribe_Values.Look(value: ref showExpandingLandmarks, label: "showExpandingLandmarks", defaultValue: false);
             Scribe_Values.Look(value: ref workPriorities, label: "workPriorities", defaultValue: false);
             Scribe_Values.Look(value: ref threatResponseMode, label: "threadResponseMode", defaultValue: HostilityResponseMode.Flee);
 
@@ -93,6 +95,7 @@ namespace Boundir.NewGamePlus
             list.DescriptiveCheckbox(label: "ShowZone", description: "ShowZoneDesc", value: ref showZones, tabSpace: tabSpace);
             list.DescriptiveCheckbox(label: "RoyalFavorReward", description: "RoyalFavorRewardDesc", value: ref allowRoyalFavorRewards, tabSpace: tabSpace);
             list.DescriptiveCheckbox(label: "GoodwillReward", description: "GoodwillRewardDesc", value: ref allowGoodwillRewards, tabSpace: tabSpace);
+            list.DescriptiveCheckbox(label: "ShowExpandingLandmarks", description: "ShowExpandingLandmarksDesc", value: ref showExpandingLandmarks, tabSpace: tabSpace);
             list.DescriptiveCheckbox(label: "ManualWorkPriorities", description: "ManualWorkPrioritiesDesc", value: ref workPriorities, gap: 0f);
 
             list.HostilityResponseSelector(threatResponseMode: ref threatResponseMode, label: "ThreatResponse", description: "HostilityReponseTip");

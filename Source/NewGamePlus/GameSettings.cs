@@ -10,6 +10,7 @@ namespace Boundir.NewGamePlus
             __instance.autoHomeArea = NewGamePlus.settings.autoExpandHomeArea;
             __instance.autoRebuild = NewGamePlus.settings.autoRebuild;
             __instance.showZones = NewGamePlus.settings.showZones;
+            __instance.showExpandingLandmarks = NewGamePlus.settings.showExpandingLandmarks;
 
             // Medical Care
             __instance.defaultCareForColonist = NewGamePlus.settings.medicalCareColonist;

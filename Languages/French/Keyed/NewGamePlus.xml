@@ -20,6 +20,9 @@
     <ShowZone>Affichage des Zones</ShowZone>
     <ShowZoneDesc>Affichage des zones de type stockage, agricoles.</ShowZoneDesc>
 
+    <ShowExpandingLandmarks>Afficher les points de repère</ShowExpandingLandmarks>
+    <ShowExpandingLandmarksDesc>Afficher les points de repère sur la carte du monde.</ShowExpandingLandmarksDesc>
+
     <ManualWorkPriorities>Priorités manuelles</ManualWorkPriorities>
     <ManualWorkPrioritiesDesc>Les colons effectueront en premier les tâches de priorité 1, de gauche à droite, puis les tâches de priorité 2 de gauche à droite, etc.</ManualWorkPrioritiesDesc>
 
