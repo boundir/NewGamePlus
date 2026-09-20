@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 
 namespace Boundir.NewGamePlus
 {
@@ -6,14 +6,17 @@ namespace Boundir.NewGamePlus
     {
         public static void OnNewBill(ref Bill __result)
         {
-            Bill_Production bill = __result as Bill_Production;
+            if (__result == null)
+            {
+                return;
+            }
 
-            if (NewGamePlus.settings.dropOnFloor)
+            if (NewGamePlus.settings.dropOnFloor && __result is Bill_Production bill)
             {
                 bill.SetStoreMode(BillStoreModeDefOf.DropOnFloor);
             }
 
-            bill.ingredientSearchRadius = NewGamePlus.settings.billSearchRadius;
+            __result.ingredientSearchRadius = NewGamePlus.settings.billSearchRadius;
         }
     }
 }
