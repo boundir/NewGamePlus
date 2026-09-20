@@ -23,6 +23,7 @@
     <ManualWorkPriorities>Priorités manuelles</ManualWorkPriorities>
     <ManualWorkPrioritiesDesc>Les colons effectueront en premier les tâches de priorité 1, de gauche à droite, puis les tâches de priorité 2 de gauche à droite, etc.</ManualWorkPrioritiesDesc>
 
+    <DefaultMedicineSettings>Options médicales par défaut</DefaultMedicineSettings>
     <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales pour chaque catégorie de pions</DefaultMedicineSettingsDesc>
 
     <DefaultProductionSettings>Options de production par défaut</DefaultProductionSettings>
@@ -38,4 +39,5 @@
     <SearchRadiusDesc>Définir le rayon de recherche de toute nouvelle commande de production.</SearchRadiusDesc>
 
     <ThreatResponse>Réponse aux menaces</ThreatResponse>
+    <ThreatResponseDesc>Comment les colons qui rejoignent la colonie réagissent à une menace proche.</ThreatResponseDesc>
 </LanguageData>

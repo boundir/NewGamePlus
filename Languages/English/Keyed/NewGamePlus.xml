@@ -23,6 +23,7 @@
     <ManualWorkPriorities>Manual work priorities</ManualWorkPriorities>
     <ManualWorkPrioritiesDesc>Colonists will do priority 1 work from left to right, then priority 2 work from left to right, and so on.</ManualWorkPrioritiesDesc>
 
+    <DefaultMedicineSettings>Default medical settings</DefaultMedicineSettings>
     <DefaultMedicineSettingsDesc>Chose the default medical settings for each pawn categories.</DefaultMedicineSettingsDesc>
 
     <DefaultProductionSettings>Default production settings</DefaultProductionSettings>
@@ -38,4 +39,5 @@
     <SearchRadiusDesc>Sets the default search radius for new production bills.</SearchRadiusDesc>
 
     <ThreatResponse>Pawn threat response</ThreatResponse>
+    <ThreatResponseDesc>How colonists who join later react to a nearby threat.</ThreatResponseDesc>
 </LanguageData>

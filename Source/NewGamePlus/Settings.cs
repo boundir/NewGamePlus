@@ -48,7 +48,15 @@ namespace Boundir.NewGamePlus
             Scribe_Values.Look(value: ref autoRebuild, label: "autoRebuild", defaultValue: false);
             Scribe_Values.Look(value: ref showZones, label: "showZones", defaultValue: true);
             Scribe_Values.Look(value: ref workPriorities, label: "workPriorities", defaultValue: false);
-            Scribe_Values.Look(value: ref threatResponseMode, label: "threadResponseMode", defaultValue: HostilityResponseMode.Flee);
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+            {
+                Scribe_Values.Look(value: ref threatResponseMode, label: "threadResponseMode", defaultValue: HostilityResponseMode.Flee);
+                Scribe_Values.Look(value: ref threatResponseMode, label: "threatResponseMode", defaultValue: threatResponseMode);
+            }
+            else
+            {
+                Scribe_Values.Look(value: ref threatResponseMode, label: "threatResponseMode", defaultValue: HostilityResponseMode.Flee);
+            }
 
             // Medical
             Scribe_Values.Look(value: ref medicalCareColonist, label: "MedGroupColonists", defaultValue: MedicalCareCategory.Best);
@@ -95,7 +103,7 @@ namespace Boundir.NewGamePlus
             list.DescriptiveCheckbox(label: "GoodwillReward", description: "GoodwillRewardDesc", value: ref allowGoodwillRewards, tabSpace: tabSpace);
             list.DescriptiveCheckbox(label: "ManualWorkPriorities", description: "ManualWorkPrioritiesDesc", value: ref workPriorities, gap: 0f);
 
-            list.HostilityResponseSelector(threatResponseMode: ref threatResponseMode, label: "ThreatResponse", description: "HostilityReponseTip");
+            list.HostilityResponseSelector(threatResponseMode: ref threatResponseMode, label: "ThreatResponse", description: "ThreatResponseDesc");
 
             list.NewColumn();
             list.Indent();
