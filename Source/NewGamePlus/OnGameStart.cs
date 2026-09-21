@@ -37,6 +37,11 @@ namespace Boundir.NewGamePlus
                 postfix: new HarmonyMethod(methodType: typeof(OnPawnJoin), nameof(OnPawnJoin.HostilityResponse))
             );
 
+            harmony.Patch(
+                original: AccessTools.Method(type: typeof(Page_SelectStoryteller), name: nameof(Page_SelectStoryteller.PreOpen)),
+                postfix: new HarmonyMethod(methodType: typeof(StorytellerTransfer), methodName: nameof(StorytellerTransfer.ApplyPreset))
+            );
+
             LongEventHandler.ExecuteWhenFinished(PersistentStore.EnsureLoaded);
         }
     }

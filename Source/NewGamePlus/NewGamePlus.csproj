@@ -10,9 +10,7 @@
     <DebugType>none</DebugType>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <EnableDefaultItems>true</EnableDefaultItems>
-    <!-- Properties\AssemblyInfo.cs already declares the assembly attributes. -->
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <!-- The mod lives inside the RimWorld install: Mods\NewGamePlus\Source\NewGamePlus -->
     <RimWorldDir>$(MSBuildProjectDirectory)\..\..\..\..</RimWorldDir>
     <RimWorldManaged>$(RimWorldDir)\RimWorldWin64_Data\Managed</RimWorldManaged>
     <HarmonyDir>$(RimWorldDir)\..\..\workshop\content\294100\2009463077\Current\Assemblies</HarmonyDir>

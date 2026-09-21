@@ -9,7 +9,8 @@ namespace Boundir.NewGamePlus
     {
         private enum SettingsTab
         {
-            General
+            General,
+            Storyteller
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace Boundir.NewGamePlus
         }
 
         /// <summary>
-        /// GUI part of settings: a tab bar, with the gameplay defaults under General.
+        /// GUI part of settings: a tab bar with General and Storyteller.
         /// </summary>
         /// <param name="rect">Unity Rect with the size of the settings window.</param>
         public override void DoSettingsWindowContents(Rect rect)
@@ -40,11 +41,20 @@ namespace Boundir.NewGamePlus
             Widgets.DrawMenuSection(rect);
             TabDrawer.DrawTabs(rect, new List<TabRecord>
             {
-                new TabRecord("NGP_TabGeneral".Translate(), () => currentTab = SettingsTab.General, currentTab == SettingsTab.General)
+                new TabRecord("NGP_TabGeneral".Translate(), () => currentTab = SettingsTab.General, currentTab == SettingsTab.General),
+                new TabRecord("NGP_TabStoryteller".Translate(), () => currentTab = SettingsTab.Storyteller, currentTab == SettingsTab.Storyteller)
             });
 
             Rect inner = rect.ContractedBy(12f);
-            settings.DoGeneralTab(inner);
+            switch (currentTab)
+            {
+                case SettingsTab.Storyteller:
+                    StorytellerTabUI.Draw(inner);
+                    break;
+                default:
+                    settings.DoGeneralTab(inner);
+                    break;
+            }
         }
 
         public override void WriteSettings()
