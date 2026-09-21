@@ -42,4 +42,28 @@
     <ThreatResponseDesc>Comment les colons qui rejoignent la colonie réagissent à une menace proche.</ThreatResponseDesc>
 
     <NGP_TabGeneral>Général</NGP_TabGeneral>
+    <NGP_TabStoryteller>Narrateur</NGP_TabStoryteller>
+    <NGP_TabAreas>Zones</NGP_TabAreas>
+
+    <NGP_CaptureFromGame>Capturer depuis la partie en cours</NGP_CaptureFromGame>
+    <NGP_ResetToVanilla>Réinitialiser</NGP_ResetToVanilla>
+    <NGP_ConfirmResetAreas>Ceci supprimera les zones enregistrées. Les nouvelles parties n'auront aucune zone autorisée personnalisée. Continuer ?</NGP_ConfirmResetAreas>
+
+    <NGP_StorytellerTabDesc>Présélectionne la page du narrateur de chaque nouvelle partie : narrateur, difficulté - y compris tous les réglages de difficulté personnalisée - mode rechargement libre ou engagement, et style de jeu des anomalies. Vous pouvez toujours tout modifier avant de commencer, et rien ici n'affecte une partie en cours.</NGP_StorytellerTabDesc>
+    <NGP_StorytellerEnable>Présélectionner ces choix sur la page du narrateur</NGP_StorytellerEnable>
+    <NGP_StorytellerEnableDesc>Désactivé, la page du narrateur se comporte exactement comme sans ce mod.</NGP_StorytellerEnableDesc>
+    <NGP_StorytellerNothingStored>Rien n'est enregistré pour l'instant : tous les choix ci-dessous sont sur « Ne pas choisir », la page du narrateur ne sera donc pas modifiée.</NGP_StorytellerNothingStored>
+    <NGP_StorytellerSection>Narrateur</NGP_StorytellerSection>
+    <NGP_DifficultySection>Difficulté</NGP_DifficultySection>
+    <NGP_SaveModeSection>Mode de sauvegarde</NGP_SaveModeSection>
+    <NGP_LeaveUnchosen>Ne pas choisir</NGP_LeaveUnchosen>
+    <NGP_LeaveUnchosenDesc>La page du narrateur posera la question comme d'habitude.</NGP_LeaveUnchosenDesc>
+    <NGP_CustomDifficultyUnavailable>Cette version de RimWorld n'expose pas le panneau de difficulté personnalisée, il ne peut donc pas être affiché ici. Les difficultés prédéfinies fonctionnent toujours.</NGP_CustomDifficultyUnavailable>
+    <NGP_ConfirmCaptureStoryteller>Les réglages de narrateur enregistrés seront remplacés par ceux de la partie en cours. Continuer ?</NGP_ConfirmCaptureStoryteller>
+    <NGP_ConfirmResetStoryteller>Les réglages de narrateur enregistrés seront effacés. La page du narrateur d'une nouvelle partie posera toutes les questions comme d'habitude. Continuer ?</NGP_ConfirmResetStoryteller>
+
+    <NGP_AreasTabDesc>Ces zones autorisées sont créées (vides) sur la carte de départ de chaque nouvelle partie. Seuls les noms et les couleurs sont conservés : les cases peintes appartiennent à une carte spécifique.</NGP_AreasTabDesc>
+    <NGP_AreaColorTip>Cliquez pour changer la couleur.</NGP_AreaColorTip>
+    <NGP_AddArea>Ajouter une zone</NGP_AddArea>
+    <NGP_NewAreaName>Zone</NGP_NewAreaName>
 </LanguageData>

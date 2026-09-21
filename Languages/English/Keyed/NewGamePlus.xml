@@ -42,4 +42,28 @@
     <ThreatResponseDesc>How colonists who join later react to a nearby threat.</ThreatResponseDesc>
 
     <NGP_TabGeneral>General</NGP_TabGeneral>
+    <NGP_TabStoryteller>Storyteller</NGP_TabStoryteller>
+    <NGP_TabAreas>Areas</NGP_TabAreas>
+
+    <NGP_CaptureFromGame>Capture from current game</NGP_CaptureFromGame>
+    <NGP_ResetToVanilla>Reset to vanilla</NGP_ResetToVanilla>
+    <NGP_ConfirmResetAreas>This will delete the stored areas. New games will not get any custom allowed areas. Continue?</NGP_ConfirmResetAreas>
+
+    <NGP_StorytellerTabDesc>Pre-selects the storyteller page of every new game: storyteller, difficulty - including every custom difficulty setting - reload-anytime versus commitment mode, and the anomaly playstyle. You can still change any of it before starting, and nothing here touches a game already in progress.</NGP_StorytellerTabDesc>
+    <NGP_StorytellerEnable>Pre-select these on the storyteller page</NGP_StorytellerEnable>
+    <NGP_StorytellerEnableDesc>Off, the storyteller page behaves exactly as it does without this mod.</NGP_StorytellerEnableDesc>
+    <NGP_StorytellerNothingStored>Nothing is stored yet - every choice below is set to "leave unchosen", so the storyteller page will not change.</NGP_StorytellerNothingStored>
+    <NGP_StorytellerSection>Storyteller</NGP_StorytellerSection>
+    <NGP_DifficultySection>Difficulty</NGP_DifficultySection>
+    <NGP_SaveModeSection>Save mode</NGP_SaveModeSection>
+    <NGP_LeaveUnchosen>Leave unchosen</NGP_LeaveUnchosen>
+    <NGP_LeaveUnchosenDesc>The storyteller page asks for this as usual.</NGP_LeaveUnchosenDesc>
+    <NGP_CustomDifficultyUnavailable>This version of RimWorld does not expose the custom difficulty panel, so it cannot be shown here. Named difficulties still work.</NGP_CustomDifficultyUnavailable>
+    <NGP_ConfirmCaptureStoryteller>This will overwrite the stored storyteller settings with those of the running game. Continue?</NGP_ConfirmCaptureStoryteller>
+    <NGP_ConfirmResetStoryteller>This will clear the stored storyteller settings. The storyteller page of a new game will ask for everything as usual. Continue?</NGP_ConfirmResetStoryteller>
+
+    <NGP_AreasTabDesc>These allowed areas are created (empty) on the starting map of every new game. Only names and colors carry over: painted cells belong to a specific map.</NGP_AreasTabDesc>
+    <NGP_AreaColorTip>Click to change the color.</NGP_AreaColorTip>
+    <NGP_AddArea>Add area</NGP_AddArea>
+    <NGP_NewAreaName>Area</NGP_NewAreaName>
 </LanguageData>
