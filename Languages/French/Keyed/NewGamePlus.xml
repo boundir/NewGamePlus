@@ -40,4 +40,6 @@
 
     <ThreatResponse>Réponse aux menaces</ThreatResponse>
     <ThreatResponseDesc>Comment les colons qui rejoignent la colonie réagissent à une menace proche.</ThreatResponseDesc>
+
+    <NGP_TabGeneral>Général</NGP_TabGeneral>
 </LanguageData>

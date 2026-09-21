@@ -13,6 +13,19 @@ namespace Boundir.NewGamePlus
 
         private static bool hostilityResponsePainting;
 
+        public static bool DisableableButton(Rect rect, string label, bool enabled)
+        {
+            if (!enabled)
+            {
+                GUI.color = new Color(1f, 1f, 1f, 0.4f);
+                Widgets.ButtonText(rect, label, drawBackground: true, doMouseoverSound: false, active: false);
+                GUI.color = Color.white;
+                return false;
+            }
+
+            return Widgets.ButtonText(rect, label);
+        }
+
         public static void DescriptiveCheckbox(this Listing_Standard list, string label, string description, ref bool value, float tabSpace = DEFAULT_TAB_SPACE, float gap = DEFAULT_GAP)
         {
             Text.Font = GameFont.Small;

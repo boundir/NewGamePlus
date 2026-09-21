@@ -8,6 +8,10 @@ namespace Boundir.NewGamePlus
     {
         private static Vector2 scrollPositionVector;
 
+        private static float generalTabHeight;
+
+        private const float TAB_BOTTOM_PADDING = 12f;
+
         public bool allowRoyalFavorRewards = true;
         public bool allowGoodwillRewards = true;
         public bool autoExpandHomeArea = true;
@@ -79,21 +83,23 @@ namespace Boundir.NewGamePlus
             Scribe_Values.Look(value: ref outfitsHitpoints, label: "outfitsHitpoints", defaultValue: FloatRange.ZeroToOne);
         }
 
-        public void DoWindowContents(Rect rect)
+        public void DoGeneralTab(Rect rect)
         {
             float columnWidth = rect.width / 2 - 40f;
             float tabSpace = 34f;
-            float windowHeight = 950f;
 
             Listing_Standard list = new Listing_Standard
             {
-                ColumnWidth = columnWidth
+                ColumnWidth = columnWidth,
+                maxOneColumn = true
             };
+
+            float windowHeight = Mathf.Max(generalTabHeight, rect.height);
 
             Rect listRect = new Rect(x: 0, y: 0, width: rect.width - 20f, height: windowHeight);
             Widgets.BeginScrollView(outRect: rect, scrollPosition: ref scrollPositionVector, viewRect: listRect, showScrollbars: true);
-            rect.height = windowHeight;
-            list.Begin(rect);
+
+            list.Begin(listRect);
 
             list.DescriptiveSection(label: "DefaultGameplaySettings", description: "DefaultGameplaySettingsDesc");
             list.DescriptiveCheckbox(label: "AutoExpandHomeArea", description: "AutoExpandHomeAreaDesc", value: ref autoExpandHomeArea, tabSpace: tabSpace);
@@ -147,6 +153,8 @@ namespace Boundir.NewGamePlus
             {
                 list.MedicalCareSelector(label: "MedGroupEntities", value: ref medicalCareEntities);
             }
+
+            generalTabHeight = list.MaxColumnHeightSeen + TAB_BOTTOM_PADDING;
 
             list.End();
 

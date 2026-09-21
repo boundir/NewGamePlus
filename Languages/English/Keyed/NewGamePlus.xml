@@ -40,4 +40,6 @@
 
     <ThreatResponse>Pawn threat response</ThreatResponse>
     <ThreatResponseDesc>How colonists who join later react to a nearby threat.</ThreatResponseDesc>
+
+    <NGP_TabGeneral>General</NGP_TabGeneral>
 </LanguageData>

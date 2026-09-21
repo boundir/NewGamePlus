@@ -37,7 +37,7 @@ namespace Boundir.NewGamePlus
                 postfix: new HarmonyMethod(methodType: typeof(OnPawnJoin), nameof(OnPawnJoin.HostilityResponse))
             );
 
-            harmony.PatchAll();
+            LongEventHandler.ExecuteWhenFinished(PersistentStore.EnsureLoaded);
         }
     }
 }
