@@ -44,6 +44,7 @@
     <NGP_TabGeneral>General</NGP_TabGeneral>
     <NGP_TabStoryteller>Storyteller</NGP_TabStoryteller>
     <NGP_TabPolicies>Policies</NGP_TabPolicies>
+    <NGP_TabBills>Bills</NGP_TabBills>
     <NGP_TabAreas>Areas</NGP_TabAreas>
 
     <NGP_PoliciesTabDesc>Policies stored here replace the default policies of every new game. Edit them directly, or capture the policies of the game you are currently playing. Reset a category to return to the unmodified game behavior.</NGP_PoliciesTabDesc>
@@ -61,6 +62,83 @@
     <NGP_ConfirmResetAreas>This will delete the stored areas. New games will not get any custom allowed areas. Continue?</NGP_ConfirmResetAreas>
     <NGP_CannotDeleteLastPolicy>Cannot delete the last stored policy. Use "Reset to vanilla" in the mod settings instead.</NGP_CannotDeleteLastPolicy>
     <NGP_CannotDeleteDefaultPolicy>Cannot delete the default policy. Make another policy the default first.</NGP_CannotDeleteDefaultPolicy>
+
+    <NGP_BillsTabDesc>Every time you save, that colony's workbench bills are added to its own group below - other colonies are left alone. Keep the bills you want for good in the library. In any game, use the import button in a workbench's Bills tab to add them back. Copying a save gives both copies the same group.</NGP_BillsTabDesc>
+
+    <NGP_BillLibrary>Library</NGP_BillLibrary>
+    <NGP_BillColonies>Captured colonies</NGP_BillColonies>
+    <NGP_NoBillLibrary>The library is empty. Use the copy button on a captured bill to keep it here for good.</NGP_NoBillLibrary>
+    <NGP_NoBillCaptures>No colony captured yet. Save a game that has workbench bills.</NGP_NoBillCaptures>
+    <NGP_UnknownColony>Unnamed colony</NGP_UnknownColony>
+    <NGP_ColonyRow>{0} - {1} workbench types, {2} bills</NGP_ColonyRow>
+    <NGP_ColonyUpdated>Updated {0}</NGP_ColonyUpdated>
+    <NGP_BenchGroupRow>{0} ({1} bills)</NGP_BenchGroupRow>
+
+    <NGP_CaptureBillsNow>Capture bills now</NGP_CaptureBillsNow>
+    <NGP_ClearLibrary>Empty the library</NGP_ClearLibrary>
+    <NGP_DeleteAllCaptures>Delete all colonies</NGP_DeleteAllCaptures>
+    <NGP_ExpandAll>Expand all</NGP_ExpandAll>
+    <NGP_CollapseAll>Collapse all</NGP_CollapseAll>
+    <NGP_ExpandDetailsTip>Show what this bill is set to.</NGP_ExpandDetailsTip>
+    <NGP_RenameBillTip>Rename this bill.</NGP_RenameBillTip>
+    <NGP_RenameColonyTip>Rename this colony group.</NGP_RenameColonyTip>
+    <NGP_CopyToLibraryTip>Keep a copy of this bill in the library.</NGP_CopyToLibraryTip>
+    <NGP_CopyColonyToLibraryTip>Copy every bill of this colony into the library.</NGP_CopyColonyToLibraryTip>
+    <NGP_DeleteBillTip>Delete this stored bill.</NGP_DeleteBillTip>
+    <NGP_DeleteBenchGroupTip>Delete every stored bill of this workbench type.</NGP_DeleteBenchGroupTip>
+    <NGP_DeleteColonyTip>Delete every bill captured from this colony.</NGP_DeleteColonyTip>
+
+    <NGP_ConfirmDeleteBill>Delete the stored bill "{0}"?</NGP_ConfirmDeleteBill>
+    <NGP_ConfirmDeleteBenchGroup>Delete the {0} stored bills for {1}?</NGP_ConfirmDeleteBenchGroup>
+    <NGP_ConfirmDeleteColony>Delete the {0} bills captured from "{1}"? The library is not affected.</NGP_ConfirmDeleteColony>
+    <NGP_ConfirmClearLibrary>Delete every bill in the library? Captured colonies are not affected.</NGP_ConfirmClearLibrary>
+    <NGP_ConfirmDeleteAllCaptures>Delete every captured colony? The library is not affected.</NGP_ConfirmDeleteAllCaptures>
+
+    <NGP_BillsCaptured>Captured {0} bills from "{1}".</NGP_BillsCaptured>
+    <NGP_NoBillsToCapture>This colony has no workbench bills to capture.</NGP_NoBillsToCapture>
+    <NGP_CopiedToLibrary>"{0}" copied to the library.</NGP_CopiedToLibrary>
+    <NGP_CopiedToLibraryMany>{0} bills copied to the library, {1} were already there.</NGP_CopiedToLibraryMany>
+    <NGP_AlreadyInLibrary>"{0}" is already in the library.</NGP_AlreadyInLibrary>
+    <NGP_BillsNoRoom>{0} bills did not fit: a workbench holds at most {1} bills.</NGP_BillsNoRoom>
+
+    <NGP_DetailRecipe>Recipe</NGP_DetailRecipe>
+    <NGP_DetailOrigin>From</NGP_DetailOrigin>
+    <NGP_DetailIngredients>Ingredients</NGP_DetailIngredients>
+    <NGP_DetailIngredientsAll>All allowed ({0})</NGP_DetailIngredientsAll>
+    <NGP_DetailIngredientsSome>{0} of {1}: {2}...</NGP_DetailIngredientsSome>
+    <NGP_DetailIngredientsNone>None allowed</NGP_DetailIngredientsNone>
+    <NGP_DetailIngredientsDefault>Recipe default</NGP_DetailIngredientsDefault>
+    <NGP_DetailRepeat>Repeat</NGP_DetailRepeat>
+    <NGP_DetailRepeatCount>{0} times</NGP_DetailRepeatCount>
+    <NGP_DetailRepeatTarget>Until you have {0}</NGP_DetailRepeatTarget>
+    <NGP_DetailPause>Pause when satisfied</NGP_DetailPause>
+    <NGP_DetailUnpauseAt>resume below {0}</NGP_DetailUnpauseAt>
+    <NGP_DetailQuality>Quality</NGP_DetailQuality>
+    <NGP_DetailHitPoints>Hit points</NGP_DetailHitPoints>
+    <NGP_DetailSkill>Skill range</NGP_DetailSkill>
+    <NGP_DetailStoreMode>When finished</NGP_DetailStoreMode>
+    <NGP_DetailPawnRestriction>Restricted to</NGP_DetailPawnRestriction>
+    <NGP_DetailSlavesOnly>Slaves only</NGP_DetailSlavesOnly>
+    <NGP_DetailMechsOnly>Mechs only</NGP_DetailMechsOnly>
+    <NGP_DetailNonMechsOnly>Non-mechs only</NGP_DetailNonMechsOnly>
+    <NGP_DetailSearchRadius>Ingredient search radius</NGP_DetailSearchRadius>
+    <NGP_DetailSuspended>Suspended</NGP_DetailSuspended>
+    <NGP_DetailIncludeEquipped>Include equipped</NGP_DetailIncludeEquipped>
+    <NGP_DetailIncludeTainted>Include tainted</NGP_DetailIncludeTainted>
+    <NGP_DetailLimitToAllowedStuff>Limit to allowed stuff</NGP_DetailLimitToAllowedStuff>
+    <NGP_Yes>Yes</NGP_Yes>
+
+    <NGP_ImportBillsTip>Import saved bills ({0} available).</NGP_ImportBillsTip>
+    <NGP_ImportBillsUnavailable>Saved bills exist for this workbench, but none can be added right now (research locked or bill list full).</NGP_ImportBillsUnavailable>
+    <NGP_ImportAllBills>Import all ({0} available)</NGP_ImportAllBills>
+    <NGP_ResearchLocked>not available</NGP_ResearchLocked>
+    <NGP_ImportDialogTitle>Import saved bills</NGP_ImportDialogTitle>
+    <NGP_ImportSelected>Import selected ({0})</NGP_ImportSelected>
+    <NGP_SelectAll>Select all</NGP_SelectAll>
+    <NGP_SelectNone>Select none</NGP_SelectNone>
+    <NGP_BillStackFull>This workbench's bill list is full.</NGP_BillStackFull>
+    <NGP_BillsSkipped>{0} bills were skipped (not available yet): {1}</NGP_BillsSkipped>
+    <NGP_BillsImported>{0} bills imported.</NGP_BillsImported>
 
     <NGP_StorytellerTabDesc>Pre-selects the storyteller page of every new game: storyteller, difficulty - including every custom difficulty setting - reload-anytime versus commitment mode, and the anomaly playstyle. You can still change any of it before starting, and nothing here touches a game already in progress.</NGP_StorytellerTabDesc>
     <NGP_StorytellerEnable>Pre-select these on the storyteller page</NGP_StorytellerEnable>

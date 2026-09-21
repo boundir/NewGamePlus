@@ -44,6 +44,7 @@
     <NGP_TabGeneral>Général</NGP_TabGeneral>
     <NGP_TabStoryteller>Narrateur</NGP_TabStoryteller>
     <NGP_TabPolicies>Règles</NGP_TabPolicies>
+    <NGP_TabBills>Commandes</NGP_TabBills>
     <NGP_TabAreas>Zones</NGP_TabAreas>
 
     <NGP_PoliciesTabDesc>Les règles enregistrées ici remplacent les règles par défaut de chaque nouvelle partie. Modifiez-les directement, ou capturez les règles de la partie en cours. Réinitialisez une catégorie pour revenir au comportement du jeu de base.</NGP_PoliciesTabDesc>
@@ -61,6 +62,83 @@
     <NGP_ConfirmResetAreas>Ceci supprimera les zones enregistrées. Les nouvelles parties n'auront aucune zone autorisée personnalisée. Continuer ?</NGP_ConfirmResetAreas>
     <NGP_CannotDeleteLastPolicy>Impossible de supprimer la dernière règle enregistrée. Utilisez « Réinitialiser » dans les options du mod.</NGP_CannotDeleteLastPolicy>
     <NGP_CannotDeleteDefaultPolicy>Impossible de supprimer la règle par défaut. Définissez d'abord une autre règle par défaut.</NGP_CannotDeleteDefaultPolicy>
+
+    <NGP_BillsTabDesc>À chaque sauvegarde, les commandes des établis de cette colonie sont ajoutées à son propre groupe ci-dessous - les autres colonies ne sont pas touchées. Conservez définitivement les commandes qui vous plaisent dans la bibliothèque. Dans n'importe quelle partie, utilisez le bouton d'import dans l'onglet Commandes d'un établi pour les récupérer. Copier une sauvegarde donne le même groupe aux deux copies.</NGP_BillsTabDesc>
+
+    <NGP_BillLibrary>Bibliothèque</NGP_BillLibrary>
+    <NGP_BillColonies>Colonies capturées</NGP_BillColonies>
+    <NGP_NoBillLibrary>La bibliothèque est vide. Utilisez le bouton de copie d'une commande capturée pour la conserver ici définitivement.</NGP_NoBillLibrary>
+    <NGP_NoBillCaptures>Aucune colonie capturée pour le moment. Sauvegardez une partie contenant des commandes d'établi.</NGP_NoBillCaptures>
+    <NGP_UnknownColony>Colonie sans nom</NGP_UnknownColony>
+    <NGP_ColonyRow>{0} - {1} types d'établi, {2} commandes</NGP_ColonyRow>
+    <NGP_ColonyUpdated>Mis à jour le {0}</NGP_ColonyUpdated>
+    <NGP_BenchGroupRow>{0} ({1} commandes)</NGP_BenchGroupRow>
+
+    <NGP_CaptureBillsNow>Capturer les commandes</NGP_CaptureBillsNow>
+    <NGP_ClearLibrary>Vider la bibliothèque</NGP_ClearLibrary>
+    <NGP_DeleteAllCaptures>Supprimer toutes les colonies</NGP_DeleteAllCaptures>
+    <NGP_ExpandAll>Tout déplier</NGP_ExpandAll>
+    <NGP_CollapseAll>Tout replier</NGP_CollapseAll>
+    <NGP_ExpandDetailsTip>Afficher le réglage de cette commande.</NGP_ExpandDetailsTip>
+    <NGP_RenameBillTip>Renommer cette commande.</NGP_RenameBillTip>
+    <NGP_RenameColonyTip>Renommer ce groupe de colonie.</NGP_RenameColonyTip>
+    <NGP_CopyToLibraryTip>Conserver une copie de cette commande dans la bibliothèque.</NGP_CopyToLibraryTip>
+    <NGP_CopyColonyToLibraryTip>Copier toutes les commandes de cette colonie dans la bibliothèque.</NGP_CopyColonyToLibraryTip>
+    <NGP_DeleteBillTip>Supprimer cette commande enregistrée.</NGP_DeleteBillTip>
+    <NGP_DeleteBenchGroupTip>Supprimer toutes les commandes enregistrées de ce type d'établi.</NGP_DeleteBenchGroupTip>
+    <NGP_DeleteColonyTip>Supprimer toutes les commandes capturées de cette colonie.</NGP_DeleteColonyTip>
+
+    <NGP_ConfirmDeleteBill>Supprimer la commande enregistrée « {0} » ?</NGP_ConfirmDeleteBill>
+    <NGP_ConfirmDeleteBenchGroup>Supprimer les {0} commandes enregistrées pour {1} ?</NGP_ConfirmDeleteBenchGroup>
+    <NGP_ConfirmDeleteColony>Supprimer les {0} commandes capturées de « {1} » ? La bibliothèque n'est pas affectée.</NGP_ConfirmDeleteColony>
+    <NGP_ConfirmClearLibrary>Supprimer toutes les commandes de la bibliothèque ? Les colonies capturées ne sont pas affectées.</NGP_ConfirmClearLibrary>
+    <NGP_ConfirmDeleteAllCaptures>Supprimer toutes les colonies capturées ? La bibliothèque n'est pas affectée.</NGP_ConfirmDeleteAllCaptures>
+
+    <NGP_BillsCaptured>{0} commandes capturées de « {1} ».</NGP_BillsCaptured>
+    <NGP_NoBillsToCapture>Cette colonie n'a aucune commande d'établi à capturer.</NGP_NoBillsToCapture>
+    <NGP_CopiedToLibrary>« {0} » copiée dans la bibliothèque.</NGP_CopiedToLibrary>
+    <NGP_CopiedToLibraryMany>{0} commandes copiées dans la bibliothèque, {1} y étaient déjà.</NGP_CopiedToLibraryMany>
+    <NGP_AlreadyInLibrary>« {0} » est déjà dans la bibliothèque.</NGP_AlreadyInLibrary>
+    <NGP_BillsNoRoom>{0} commandes n'ont pas pu être ajoutées : un établi accepte au maximum {1} commandes.</NGP_BillsNoRoom>
+
+    <NGP_DetailRecipe>Recette</NGP_DetailRecipe>
+    <NGP_DetailOrigin>Provenance</NGP_DetailOrigin>
+    <NGP_DetailIngredients>Ingrédients</NGP_DetailIngredients>
+    <NGP_DetailIngredientsAll>Tous autorisés ({0})</NGP_DetailIngredientsAll>
+    <NGP_DetailIngredientsSome>{0} sur {1} : {2}...</NGP_DetailIngredientsSome>
+    <NGP_DetailIngredientsNone>Aucun autorisé</NGP_DetailIngredientsNone>
+    <NGP_DetailIngredientsDefault>Valeur par défaut de la recette</NGP_DetailIngredientsDefault>
+    <NGP_DetailRepeat>Répétition</NGP_DetailRepeat>
+    <NGP_DetailRepeatCount>{0} fois</NGP_DetailRepeatCount>
+    <NGP_DetailRepeatTarget>Jusqu'à en avoir {0}</NGP_DetailRepeatTarget>
+    <NGP_DetailPause>Pause quand atteint</NGP_DetailPause>
+    <NGP_DetailUnpauseAt>reprise en dessous de {0}</NGP_DetailUnpauseAt>
+    <NGP_DetailQuality>Qualité</NGP_DetailQuality>
+    <NGP_DetailHitPoints>Points de vie</NGP_DetailHitPoints>
+    <NGP_DetailSkill>Niveau de compétence</NGP_DetailSkill>
+    <NGP_DetailStoreMode>Une fois terminé</NGP_DetailStoreMode>
+    <NGP_DetailPawnRestriction>Réservé à</NGP_DetailPawnRestriction>
+    <NGP_DetailSlavesOnly>Esclaves uniquement</NGP_DetailSlavesOnly>
+    <NGP_DetailMechsOnly>Mécanoïdes uniquement</NGP_DetailMechsOnly>
+    <NGP_DetailNonMechsOnly>Non-mécanoïdes uniquement</NGP_DetailNonMechsOnly>
+    <NGP_DetailSearchRadius>Rayon de recherche des ingrédients</NGP_DetailSearchRadius>
+    <NGP_DetailSuspended>Suspendue</NGP_DetailSuspended>
+    <NGP_DetailIncludeEquipped>Inclure l'équipement porté</NGP_DetailIncludeEquipped>
+    <NGP_DetailIncludeTainted>Inclure les vêtements souillés</NGP_DetailIncludeTainted>
+    <NGP_DetailLimitToAllowedStuff>Limiter aux matériaux autorisés</NGP_DetailLimitToAllowedStuff>
+    <NGP_Yes>Oui</NGP_Yes>
+
+    <NGP_ImportBillsTip>Importer les commandes enregistrées ({0} disponibles).</NGP_ImportBillsTip>
+    <NGP_ImportBillsUnavailable>Des commandes enregistrées existent pour cet établi, mais aucune ne peut être ajoutée pour l'instant (recherche verrouillée ou liste pleine).</NGP_ImportBillsUnavailable>
+    <NGP_ImportAllBills>Tout importer ({0} disponibles)</NGP_ImportAllBills>
+    <NGP_ResearchLocked>indisponible</NGP_ResearchLocked>
+    <NGP_ImportDialogTitle>Importer les commandes enregistrées</NGP_ImportDialogTitle>
+    <NGP_ImportSelected>Importer la sélection ({0})</NGP_ImportSelected>
+    <NGP_SelectAll>Tout sélectionner</NGP_SelectAll>
+    <NGP_SelectNone>Tout désélectionner</NGP_SelectNone>
+    <NGP_BillStackFull>La liste de commandes de cet établi est pleine.</NGP_BillStackFull>
+    <NGP_BillsSkipped>{0} commandes ignorées (pas encore disponibles) : {1}</NGP_BillsSkipped>
+    <NGP_BillsImported>{0} commandes importées.</NGP_BillsImported>
 
     <NGP_StorytellerTabDesc>Présélectionne la page du narrateur de chaque nouvelle partie : narrateur, difficulté - y compris tous les réglages de difficulté personnalisée - mode rechargement libre ou engagement, et style de jeu des anomalies. Vous pouvez toujours tout modifier avant de commencer, et rien ici n'affecte une partie en cours.</NGP_StorytellerTabDesc>
     <NGP_StorytellerEnable>Présélectionner ces choix sur la page du narrateur</NGP_StorytellerEnable>

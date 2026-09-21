@@ -38,8 +38,17 @@ namespace Boundir.NewGamePlus
             );
 
             harmony.Patch(
+                original: AccessTools.Method(type: typeof(GameDataSaveLoader), name: nameof(GameDataSaveLoader.SaveGame)),
+                postfix: new HarmonyMethod(methodType: typeof(OnGameSave), methodName: nameof(OnGameSave.AfterSaveGame))
+            );
+            harmony.Patch(
                 original: AccessTools.Method(type: typeof(Page_SelectStoryteller), name: nameof(Page_SelectStoryteller.PreOpen)),
                 postfix: new HarmonyMethod(methodType: typeof(StorytellerTransfer), methodName: nameof(StorytellerTransfer.ApplyPreset))
+            );
+
+            harmony.Patch(
+                original: AccessTools.Method(type: typeof(ITab_Bills), name: "FillTab"),
+                postfix: new HarmonyMethod(methodType: typeof(BillsTabImport), methodName: nameof(BillsTabImport.DrawImportButton))
             );
 
             LongEventHandler.ExecuteWhenFinished(PersistentStore.EnsureLoaded);

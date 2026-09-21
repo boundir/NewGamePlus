@@ -19,6 +19,12 @@ namespace Boundir.NewGamePlus
         public StoredPolicyCategory<DrugPolicy> drugs = new StoredPolicyCategory<DrugPolicy>();
         public StoredPolicyCategory<ReadingPolicy> reading = new StoredPolicyCategory<ReadingPolicy>();
 
+        public List<BenchBillPreset> billLibrary = new List<BenchBillPreset>();
+
+        public List<ColonyBillCapture> billCaptures = new List<ColonyBillCapture>();
+
+        public int billStamp;
+
         public void ExposeData()
         {
             Scribe_Values.Look(ref version, "version", CurrentVersion);
@@ -28,6 +34,8 @@ namespace Boundir.NewGamePlus
             Scribe_Deep.Look(ref food, "food");
             Scribe_Deep.Look(ref drugs, "drugs");
             Scribe_Deep.Look(ref reading, "reading");
+            Scribe_Collections.Look(ref billLibrary, "billLibrary", LookMode.Deep);
+            Scribe_Collections.Look(ref billCaptures, "billCaptures", LookMode.Deep);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -41,6 +49,14 @@ namespace Boundir.NewGamePlus
                 food = food ?? new StoredPolicyCategory<FoodPolicy>();
                 drugs = drugs ?? new StoredPolicyCategory<DrugPolicy>();
                 reading = reading ?? new StoredPolicyCategory<ReadingPolicy>();
+
+                billLibrary = billLibrary ?? new List<BenchBillPreset>();
+                billLibrary.RemoveAll(p => p == null || p.benchDef == null || p.bills.Count == 0);
+
+                billCaptures = billCaptures ?? new List<ColonyBillCapture>();
+                billCaptures.RemoveAll(c => c == null || c.benches.Count == 0);
+
+                billStamp++;
             }
         }
     }
