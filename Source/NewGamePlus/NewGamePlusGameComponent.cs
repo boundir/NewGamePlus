@@ -16,11 +16,12 @@ namespace Boundir.NewGamePlus
         {
             try
             {
+                PolicyTransfer.ImportAll(game);
                 AreaTransfer.ImportAll(game);
             }
             catch (Exception e)
             {
-                Log.Error("[NewGamePlus] Failed to apply stored areas to the new game: " + e);
+                Log.Error("[NewGamePlus] Failed to apply stored policies and areas to the new game: " + e);
             }
         }
     }

@@ -43,11 +43,24 @@
 
     <NGP_TabGeneral>General</NGP_TabGeneral>
     <NGP_TabStoryteller>Storyteller</NGP_TabStoryteller>
+    <NGP_TabPolicies>Policies</NGP_TabPolicies>
     <NGP_TabAreas>Areas</NGP_TabAreas>
 
+    <NGP_PoliciesTabDesc>Policies stored here replace the default policies of every new game. Edit them directly, or capture the policies of the game you are currently playing. Reset a category to return to the unmodified game behavior.</NGP_PoliciesTabDesc>
+    <NGP_ApparelPolicies>Apparel policies</NGP_ApparelPolicies>
+    <NGP_FoodPolicies>Food policies</NGP_FoodPolicies>
+    <NGP_DrugPolicies>Drug policies</NGP_DrugPolicies>
+    <NGP_ReadingPolicies>Reading policies</NGP_ReadingPolicies>
+    <NGP_StoredCount>Stored: {0} policies</NGP_StoredCount>
+    <NGP_UsingVanilla>Not customized (vanilla)</NGP_UsingVanilla>
+    <NGP_EditPolicies>Edit...</NGP_EditPolicies>
     <NGP_CaptureFromGame>Capture from current game</NGP_CaptureFromGame>
     <NGP_ResetToVanilla>Reset to vanilla</NGP_ResetToVanilla>
+    <NGP_ConfirmCaptureOverwrite>This will overwrite the currently stored set with the policies of the running game. Continue?</NGP_ConfirmCaptureOverwrite>
+    <NGP_ConfirmResetPolicies>This will delete the stored policies. New games will use the unmodified game defaults. Continue?</NGP_ConfirmResetPolicies>
     <NGP_ConfirmResetAreas>This will delete the stored areas. New games will not get any custom allowed areas. Continue?</NGP_ConfirmResetAreas>
+    <NGP_CannotDeleteLastPolicy>Cannot delete the last stored policy. Use "Reset to vanilla" in the mod settings instead.</NGP_CannotDeleteLastPolicy>
+    <NGP_CannotDeleteDefaultPolicy>Cannot delete the default policy. Make another policy the default first.</NGP_CannotDeleteDefaultPolicy>
 
     <NGP_StorytellerTabDesc>Pre-selects the storyteller page of every new game: storyteller, difficulty - including every custom difficulty setting - reload-anytime versus commitment mode, and the anomaly playstyle. You can still change any of it before starting, and nothing here touches a game already in progress.</NGP_StorytellerTabDesc>
     <NGP_StorytellerEnable>Pre-select these on the storyteller page</NGP_StorytellerEnable>

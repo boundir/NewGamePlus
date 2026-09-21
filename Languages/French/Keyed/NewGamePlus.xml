@@ -43,11 +43,24 @@
 
     <NGP_TabGeneral>Général</NGP_TabGeneral>
     <NGP_TabStoryteller>Narrateur</NGP_TabStoryteller>
+    <NGP_TabPolicies>Règles</NGP_TabPolicies>
     <NGP_TabAreas>Zones</NGP_TabAreas>
 
+    <NGP_PoliciesTabDesc>Les règles enregistrées ici remplacent les règles par défaut de chaque nouvelle partie. Modifiez-les directement, ou capturez les règles de la partie en cours. Réinitialisez une catégorie pour revenir au comportement du jeu de base.</NGP_PoliciesTabDesc>
+    <NGP_ApparelPolicies>Règles vestimentaires</NGP_ApparelPolicies>
+    <NGP_FoodPolicies>Règles alimentaires</NGP_FoodPolicies>
+    <NGP_DrugPolicies>Règles de consommation de drogues</NGP_DrugPolicies>
+    <NGP_ReadingPolicies>Règles de lecture</NGP_ReadingPolicies>
+    <NGP_StoredCount>Enregistrées : {0} règles</NGP_StoredCount>
+    <NGP_UsingVanilla>Non personnalisées (jeu de base)</NGP_UsingVanilla>
+    <NGP_EditPolicies>Modifier...</NGP_EditPolicies>
     <NGP_CaptureFromGame>Capturer depuis la partie en cours</NGP_CaptureFromGame>
     <NGP_ResetToVanilla>Réinitialiser</NGP_ResetToVanilla>
+    <NGP_ConfirmCaptureOverwrite>Ceci remplacera les règles enregistrées par celles de la partie en cours. Continuer ?</NGP_ConfirmCaptureOverwrite>
+    <NGP_ConfirmResetPolicies>Ceci supprimera les règles enregistrées. Les nouvelles parties utiliseront les valeurs par défaut du jeu. Continuer ?</NGP_ConfirmResetPolicies>
     <NGP_ConfirmResetAreas>Ceci supprimera les zones enregistrées. Les nouvelles parties n'auront aucune zone autorisée personnalisée. Continuer ?</NGP_ConfirmResetAreas>
+    <NGP_CannotDeleteLastPolicy>Impossible de supprimer la dernière règle enregistrée. Utilisez « Réinitialiser » dans les options du mod.</NGP_CannotDeleteLastPolicy>
+    <NGP_CannotDeleteDefaultPolicy>Impossible de supprimer la règle par défaut. Définissez d'abord une autre règle par défaut.</NGP_CannotDeleteDefaultPolicy>
 
     <NGP_StorytellerTabDesc>Présélectionne la page du narrateur de chaque nouvelle partie : narrateur, difficulté - y compris tous les réglages de difficulté personnalisée - mode rechargement libre ou engagement, et style de jeu des anomalies. Vous pouvez toujours tout modifier avant de commencer, et rien ici n'affecte une partie en cours.</NGP_StorytellerTabDesc>
     <NGP_StorytellerEnable>Présélectionner ces choix sur la page du narrateur</NGP_StorytellerEnable>

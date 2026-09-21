@@ -11,6 +11,7 @@ namespace Boundir.NewGamePlus
         {
             General,
             Storyteller,
+            Policies,
             Areas
         }
 
@@ -31,7 +32,7 @@ namespace Boundir.NewGamePlus
         }
 
         /// <summary>
-        /// GUI part of settings: a tab bar with General, Storyteller and Areas.
+        /// GUI part of settings: a tab bar with General, Storyteller, Policies and Areas.
         /// </summary>
         /// <param name="rect">Unity Rect with the size of the settings window.</param>
         public override void DoSettingsWindowContents(Rect rect)
@@ -44,6 +45,7 @@ namespace Boundir.NewGamePlus
             {
                 new TabRecord("NGP_TabGeneral".Translate(), () => currentTab = SettingsTab.General, currentTab == SettingsTab.General),
                 new TabRecord("NGP_TabStoryteller".Translate(), () => currentTab = SettingsTab.Storyteller, currentTab == SettingsTab.Storyteller),
+                new TabRecord("NGP_TabPolicies".Translate(), () => currentTab = SettingsTab.Policies, currentTab == SettingsTab.Policies),
                 new TabRecord("NGP_TabAreas".Translate(), () => currentTab = SettingsTab.Areas, currentTab == SettingsTab.Areas)
             });
 
@@ -52,6 +54,9 @@ namespace Boundir.NewGamePlus
             {
                 case SettingsTab.Storyteller:
                     StorytellerTabUI.Draw(inner);
+                    break;
+                case SettingsTab.Policies:
+                    PoliciesTabUI.Draw(inner);
                     break;
                 case SettingsTab.Areas:
                     AreasTabUI.Draw(inner);
