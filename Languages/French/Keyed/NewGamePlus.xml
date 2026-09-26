@@ -3,13 +3,13 @@
     <NewGamePlus>New Game +</NewGamePlus>
 
     <DefaultGameplaySettings>Options de jouabilité par défaut</DefaultGameplaySettings>
-    <DefaultGameplaySettingsDesc>Définir les options de jouabilité par défaut pour toute future nouvelle partie.</DefaultGameplaySettingsDesc>
+    <DefaultGameplaySettingsDesc>Options de jouabilité par défaut pour chaque nouvelle partie. Les options de récompenses s'appliquent aussi aux factions rencontrées en cours de partie.</DefaultGameplaySettingsDesc>
 
     <RoyalFavorReward>Autoriser les récompenses en faveurs royales</RoyalFavorReward>
-    <RoyalFavorRewardDesc>Les factions pourront proposer des récompenses en faveurs royales</RoyalFavorRewardDesc>
+    <RoyalFavorRewardDesc>Les factions pourront proposer des récompenses en faveurs royales.</RoyalFavorRewardDesc>
 
-    <GoodwillReward>Accepter de meilleures relations</GoodwillReward>
-    <GoodwillRewardDesc>Les factions pourront proposer des récompenses par l'amélioration de vos relations diplomatiques.</GoodwillRewardDesc>
+    <GoodwillReward>Autoriser les récompenses de bonne entente</GoodwillReward>
+    <GoodwillRewardDesc>Les factions pourront proposer des récompenses améliorant votre bonne entente.</GoodwillRewardDesc>
 
     <AutoExpandHomeArea>Étendre la zone de base automatiquement</AutoExpandHomeArea>
     <AutoExpandHomeAreaDesc>La zone de base s'étend automatiquement à la suite de nouvelles constructions.</AutoExpandHomeAreaDesc>
@@ -18,28 +18,28 @@
     <AutoRebuildDesc>Les structures détruites dans la zone de base seront automatiquement reconstruites.</AutoRebuildDesc>
 
     <ShowZone>Affichage des Zones</ShowZone>
-    <ShowZoneDesc>Affichage des zones de type stockage, agricoles.</ShowZoneDesc>
+    <ShowZoneDesc>Affichage des zones de type stockage et zones de culture.</ShowZoneDesc>
 
     <ManualWorkPriorities>Priorités manuelles</ManualWorkPriorities>
     <ManualWorkPrioritiesDesc>Les colons effectueront en premier les tâches de priorité 1, de gauche à droite, puis les tâches de priorité 2 de gauche à droite, etc.</ManualWorkPrioritiesDesc>
 
     <DefaultMedicineSettings>Options médicales par défaut</DefaultMedicineSettings>
-    <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales pour chaque catégorie de pions</DefaultMedicineSettingsDesc>
+    <DefaultMedicineSettingsDesc>Sélectionner les préférences médicales par défaut pour chaque catégorie de pions.</DefaultMedicineSettingsDesc>
 
     <DefaultProductionSettings>Options de production par défaut</DefaultProductionSettings>
-    <DefaultProductionSettingsDesc>Définir les options de production pour toute nouvelle commande.</DefaultProductionSettingsDesc>
+    <DefaultProductionSettingsDesc>Options par défaut de chaque commande de production créée, dans les nouvelles parties comme dans celles en cours.</DefaultProductionSettingsDesc>
 
-    <Outfits>Equipements</Outfits>
-    <OutfitsDesc>Définir le taux d'usure des tenues.</OutfitsDesc>
+    <Outfits>Points de vie des tenues</Outfits>
+    <OutfitsDesc>Points de vie autorisés par défaut des tenues dans les nouvelles parties et pour toute nouvelle tenue. Les règles vestimentaires enregistrées conservent leurs propres plages de points de vie.</OutfitsDesc>
 
     <DropOnFloor>Déposer au sol</DropOnFloor>
-    <DropOnFloorDesc>Déposer au sol toute nouvelle command par défaut.</DropOnFloorDesc>
+    <DropOnFloorDesc>Déposer au sol toute nouvelle commande par défaut.</DropOnFloorDesc>
 
     <SearchRadius>Rayon de recherche des commandes</SearchRadius>
     <SearchRadiusDesc>Définir le rayon de recherche de toute nouvelle commande de production.</SearchRadiusDesc>
 
     <ThreatResponse>Réponse aux menaces</ThreatResponse>
-    <ThreatResponseDesc>Comment les colons qui rejoignent la colonie réagissent à une menace proche.</ThreatResponseDesc>
+    <ThreatResponseDesc>Comment les colons réagissent à une menace proche. S'applique aux colons de départ et à tous ceux qui rejoignent ensuite.</ThreatResponseDesc>
 
     <NGP_TabGeneral>Général</NGP_TabGeneral>
     <NGP_TabStoryteller>Narrateur</NGP_TabStoryteller>
@@ -63,7 +63,9 @@
     <NGP_CannotDeleteLastPolicy>Impossible de supprimer la dernière règle enregistrée. Utilisez « Réinitialiser » dans les options du mod.</NGP_CannotDeleteLastPolicy>
     <NGP_CannotDeleteDefaultPolicy>Impossible de supprimer la règle par défaut. Définissez d'abord une autre règle par défaut.</NGP_CannotDeleteDefaultPolicy>
 
-    <NGP_BillsTabDesc>À chaque sauvegarde, les commandes des établis de cette colonie sont ajoutées à son propre groupe ci-dessous - les autres colonies ne sont pas touchées. Conservez définitivement les commandes qui vous plaisent dans la bibliothèque. Dans n'importe quelle partie, utilisez le bouton d'import dans l'onglet Commandes d'un établi pour les récupérer. Copier une sauvegarde donne le même groupe aux deux copies.</NGP_BillsTabDesc>
+    <NGP_BillsTabDesc>À chaque sauvegarde, les commandes des établis de cette colonie sont capturées dans son propre groupe ci-dessous - les autres colonies ne sont pas touchées. Modifier une commande en jeu met à jour sa copie enregistrée ; les commandes supprimées en jeu restent ici jusqu'à ce que vous les retiriez. Conservez définitivement les commandes qui vous plaisent dans la bibliothèque. Dans n'importe quelle partie, utilisez le bouton d'import dans l'onglet Commandes d'un établi pour les récupérer.</NGP_BillsTabDesc>
+    <NGP_CaptureOnSave>Capturer les commandes d'établi de la colonie à chaque sauvegarde</NGP_CaptureOnSave>
+    <NGP_CaptureOnSaveDesc>Désactivé, les colonies ne sont capturées qu'avec le bouton ci-dessous.</NGP_CaptureOnSaveDesc>
 
     <NGP_BillLibrary>Bibliothèque</NGP_BillLibrary>
     <NGP_BillColonies>Colonies capturées</NGP_BillColonies>
@@ -129,7 +131,7 @@
     <NGP_Yes>Oui</NGP_Yes>
 
     <NGP_ImportBillsTip>Importer les commandes enregistrées ({0} disponibles).</NGP_ImportBillsTip>
-    <NGP_ImportBillsUnavailable>Des commandes enregistrées existent pour cet établi, mais aucune ne peut être ajoutée pour l'instant (recherche verrouillée ou liste pleine).</NGP_ImportBillsUnavailable>
+    <NGP_ImportBillsUnavailable>Des commandes enregistrées existent pour cet établi, mais aucune ne peut être ajoutée pour l'instant (prérequis manquants ou liste pleine).</NGP_ImportBillsUnavailable>
     <NGP_ImportAllBills>Tout importer ({0} disponibles)</NGP_ImportAllBills>
     <NGP_ResearchLocked>indisponible</NGP_ResearchLocked>
     <NGP_ImportDialogTitle>Importer les commandes enregistrées</NGP_ImportDialogTitle>
@@ -150,10 +152,12 @@
     <NGP_LeaveUnchosen>Ne pas choisir</NGP_LeaveUnchosen>
     <NGP_LeaveUnchosenDesc>La page du narrateur posera la question comme d'habitude.</NGP_LeaveUnchosenDesc>
     <NGP_CustomDifficultyUnavailable>Cette version de RimWorld n'expose pas le panneau de difficulté personnalisée, il ne peut donc pas être affiché ici. Les difficultés prédéfinies fonctionnent toujours.</NGP_CustomDifficultyUnavailable>
+    <NGP_AnomalyNeedsDifficulty>Choisissez une difficulté ci-dessus pour présélectionner aussi le style de jeu des anomalies.</NGP_AnomalyNeedsDifficulty>
     <NGP_ConfirmCaptureStoryteller>Les réglages de narrateur enregistrés seront remplacés par ceux de la partie en cours. Continuer ?</NGP_ConfirmCaptureStoryteller>
     <NGP_ConfirmResetStoryteller>Les réglages de narrateur enregistrés seront effacés. La page du narrateur d'une nouvelle partie posera toutes les questions comme d'habitude. Continuer ?</NGP_ConfirmResetStoryteller>
 
-    <NGP_AreasTabDesc>Ces zones autorisées sont créées (vides) sur la carte de départ de chaque nouvelle partie. Seuls les noms et les couleurs sont conservés : les cases peintes appartiennent à une carte spécifique.</NGP_AreasTabDesc>
+    <NGP_AreasTabDesc>Ces zones autorisées sont créées (vides) sur la carte de départ de chaque nouvelle partie, à côté de la zone de départ du jeu. Seuls les noms et les couleurs sont conservés : les cases peintes appartiennent à une carte spécifique. Le jeu autorise au maximum 10 zones autorisées par carte.</NGP_AreasTabDesc>
+    <NGP_ConfirmCaptureAreas>Ceci remplacera les zones enregistrées par les zones autorisées de la partie en cours. Continuer ?</NGP_ConfirmCaptureAreas>
     <NGP_AreaColorTip>Cliquez pour changer la couleur.</NGP_AreaColorTip>
     <NGP_AddArea>Ajouter une zone</NGP_AddArea>
     <NGP_NewAreaName>Zone</NGP_NewAreaName>

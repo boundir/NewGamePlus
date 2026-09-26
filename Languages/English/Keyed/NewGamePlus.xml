@@ -3,7 +3,7 @@
     <NewGamePlus>New Game +</NewGamePlus>
 
     <DefaultGameplaySettings>Default gameplay settings</DefaultGameplaySettings>
-    <DefaultGameplaySettingsDesc>Set the default gameplay settings for new games.</DefaultGameplaySettingsDesc>
+    <DefaultGameplaySettingsDesc>Default gameplay settings for every new game. The reward settings also apply to factions met while playing.</DefaultGameplaySettingsDesc>
 
     <RoyalFavorReward>Allow Royal Favor rewards</RoyalFavorReward>
     <RoyalFavorRewardDesc>Factions can reward you with Royal Favors.</RoyalFavorRewardDesc>
@@ -18,19 +18,19 @@
     <AutoRebuildDesc>Destroyed structures in the home area will be set to be rebuilt.</AutoRebuildDesc>
 
     <ShowZone>Display Zones</ShowZone>
-    <ShowZoneDesc>Display zones such as stockpiles, growzones.</ShowZoneDesc>
+    <ShowZoneDesc>Display zones such as stockpiles and growing zones.</ShowZoneDesc>
 
     <ManualWorkPriorities>Manual work priorities</ManualWorkPriorities>
     <ManualWorkPrioritiesDesc>Colonists will do priority 1 work from left to right, then priority 2 work from left to right, and so on.</ManualWorkPrioritiesDesc>
 
     <DefaultMedicineSettings>Default medical settings</DefaultMedicineSettings>
-    <DefaultMedicineSettingsDesc>Chose the default medical settings for each pawn categories.</DefaultMedicineSettingsDesc>
+    <DefaultMedicineSettingsDesc>Choose the default medical care for each pawn category.</DefaultMedicineSettingsDesc>
 
     <DefaultProductionSettings>Default production settings</DefaultProductionSettings>
-    <DefaultProductionSettingsDesc>Set the default production settings for new production bills.</DefaultProductionSettingsDesc>
+    <DefaultProductionSettingsDesc>Default settings for every production bill you create, in new games and in games already running.</DefaultProductionSettingsDesc>
 
-    <Outfits>Outfits hitpoints</Outfits>
-    <OutfitsDesc>Set default hitpoints for all outfits.</OutfitsDesc>
+    <Outfits>Outfit hit points</Outfits>
+    <OutfitsDesc>Default allowed hit points for outfits in new games and for newly created outfits. Stored apparel policies keep their own saved hit point ranges.</OutfitsDesc>
 
     <DropOnFloor>Drop on the floor</DropOnFloor>
     <DropOnFloorDesc>Default bill policy to drop on floor instead of best stockpile.</DropOnFloorDesc>
@@ -39,7 +39,7 @@
     <SearchRadiusDesc>Sets the default search radius for new production bills.</SearchRadiusDesc>
 
     <ThreatResponse>Pawn threat response</ThreatResponse>
-    <ThreatResponseDesc>How colonists who join later react to a nearby threat.</ThreatResponseDesc>
+    <ThreatResponseDesc>How colonists react to a nearby threat. Applies to the starting colonists and to everyone who joins later.</ThreatResponseDesc>
 
     <NGP_TabGeneral>General</NGP_TabGeneral>
     <NGP_TabStoryteller>Storyteller</NGP_TabStoryteller>
@@ -63,7 +63,9 @@
     <NGP_CannotDeleteLastPolicy>Cannot delete the last stored policy. Use "Reset to vanilla" in the mod settings instead.</NGP_CannotDeleteLastPolicy>
     <NGP_CannotDeleteDefaultPolicy>Cannot delete the default policy. Make another policy the default first.</NGP_CannotDeleteDefaultPolicy>
 
-    <NGP_BillsTabDesc>Every time you save, that colony's workbench bills are added to its own group below - other colonies are left alone. Keep the bills you want for good in the library. In any game, use the import button in a workbench's Bills tab to add them back. Copying a save gives both copies the same group.</NGP_BillsTabDesc>
+    <NGP_BillsTabDesc>Every time you save, that colony's workbench bills are captured into its own group below - other colonies are left alone. Editing a bill in game updates its stored copy; bills you delete in game stay here until you remove them. Keep the bills you want for good in the library. In any game, use the import button in a workbench's Bills tab to add them back.</NGP_BillsTabDesc>
+    <NGP_CaptureOnSave>Capture this colony's workbench bills on every save</NGP_CaptureOnSave>
+    <NGP_CaptureOnSaveDesc>Off, colonies are only captured with the button below.</NGP_CaptureOnSaveDesc>
 
     <NGP_BillLibrary>Library</NGP_BillLibrary>
     <NGP_BillColonies>Captured colonies</NGP_BillColonies>
@@ -129,7 +131,7 @@
     <NGP_Yes>Yes</NGP_Yes>
 
     <NGP_ImportBillsTip>Import saved bills ({0} available).</NGP_ImportBillsTip>
-    <NGP_ImportBillsUnavailable>Saved bills exist for this workbench, but none can be added right now (research locked or bill list full).</NGP_ImportBillsUnavailable>
+    <NGP_ImportBillsUnavailable>Saved bills exist for this workbench, but none can be added right now (missing requirements or the bill list is full).</NGP_ImportBillsUnavailable>
     <NGP_ImportAllBills>Import all ({0} available)</NGP_ImportAllBills>
     <NGP_ResearchLocked>not available</NGP_ResearchLocked>
     <NGP_ImportDialogTitle>Import saved bills</NGP_ImportDialogTitle>
@@ -150,10 +152,12 @@
     <NGP_LeaveUnchosen>Leave unchosen</NGP_LeaveUnchosen>
     <NGP_LeaveUnchosenDesc>The storyteller page asks for this as usual.</NGP_LeaveUnchosenDesc>
     <NGP_CustomDifficultyUnavailable>This version of RimWorld does not expose the custom difficulty panel, so it cannot be shown here. Named difficulties still work.</NGP_CustomDifficultyUnavailable>
+    <NGP_AnomalyNeedsDifficulty>Choose a difficulty above to also pre-select the anomaly playstyle.</NGP_AnomalyNeedsDifficulty>
     <NGP_ConfirmCaptureStoryteller>This will overwrite the stored storyteller settings with those of the running game. Continue?</NGP_ConfirmCaptureStoryteller>
     <NGP_ConfirmResetStoryteller>This will clear the stored storyteller settings. The storyteller page of a new game will ask for everything as usual. Continue?</NGP_ConfirmResetStoryteller>
 
-    <NGP_AreasTabDesc>These allowed areas are created (empty) on the starting map of every new game. Only names and colors carry over: painted cells belong to a specific map.</NGP_AreasTabDesc>
+    <NGP_AreasTabDesc>These allowed areas are created (empty) on the starting map of every new game, next to the game's own starting area. Only names and colors carry over: painted cells belong to a specific map. The game allows at most 10 allowed areas per map.</NGP_AreasTabDesc>
+    <NGP_ConfirmCaptureAreas>This will replace the stored areas with the allowed areas of the running game. Continue?</NGP_ConfirmCaptureAreas>
     <NGP_AreaColorTip>Click to change the color.</NGP_AreaColorTip>
     <NGP_AddArea>Add area</NGP_AddArea>
     <NGP_NewAreaName>Area</NGP_NewAreaName>
