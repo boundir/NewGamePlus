@@ -43,7 +43,7 @@ namespace Boundir.NewGamePlus
         public override void PostClose()
         {
             base.PostClose();
-            PersistentStore.Save();
+            PolicyTransfer.AfterStoredDrugsEdit();
         }
     }
 }

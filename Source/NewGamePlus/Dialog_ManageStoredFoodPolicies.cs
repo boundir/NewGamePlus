@@ -16,25 +16,7 @@ namespace Boundir.NewGamePlus
         protected override FoodPolicy CreateNewPolicy()
         {
             int id = Store.NextId();
-            FoodPolicy policy = new FoodPolicy(id, "FoodPolicy".Translate() + " " + id);
-            foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs.Where(x => x.GetStatValueAbstract(StatDefOf.Nutrition) > 0f))
-            {
-                policy.filter.SetAllow(def, allow: true);
-            }
-
-            if (ModsConfig.IdeologyActive)
-            {
-                policy.filter.SetAllow(SpecialThingFilterDefOf.AllowVegetarian, allow: true);
-                policy.filter.SetAllow(SpecialThingFilterDefOf.AllowCarnivore, allow: true);
-                policy.filter.SetAllow(SpecialThingFilterDefOf.AllowCannibal, allow: true);
-                policy.filter.SetAllow(SpecialThingFilterDefOf.AllowInsectMeat, allow: true);
-            }
-
-            if (ModsConfig.BiotechActive)
-            {
-                policy.filter.SetAllow(ThingDefOf.HemogenPack, allow: false);
-            }
-
+            FoodPolicy policy = PolicyTransfer.MakeFreshFoodPolicy(id, "FoodPolicy".Translate() + " " + id);
             Store.policies.Add(policy);
             return policy;
         }
@@ -62,7 +44,7 @@ namespace Boundir.NewGamePlus
         public override void PostClose()
         {
             base.PostClose();
-            PersistentStore.Save();
+            PolicyTransfer.AfterStoredFoodEdit();
         }
     }
 }

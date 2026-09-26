@@ -15,8 +15,7 @@ namespace Boundir.NewGamePlus
         protected override ApparelPolicy CreateNewPolicy()
         {
             int id = Store.NextId();
-            ApparelPolicy policy = new ApparelPolicy(id, "ApparelPolicy".Translate() + " " + id);
-            policy.filter.SetAllow(ThingCategoryDefOf.Apparel, allow: true);
+            ApparelPolicy policy = PolicyTransfer.MakeFreshApparelPolicy(id, "ApparelPolicy".Translate() + " " + id);
             Store.policies.Add(policy);
             return policy;
         }
@@ -44,7 +43,7 @@ namespace Boundir.NewGamePlus
         public override void PostClose()
         {
             base.PostClose();
-            PersistentStore.Save();
+            PolicyTransfer.AfterStoredApparelEdit();
         }
     }
 }
