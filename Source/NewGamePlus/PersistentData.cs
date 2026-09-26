@@ -43,7 +43,10 @@ namespace Boundir.NewGamePlus
                 storytellerPreset = storytellerPreset ?? new StorytellerPreset();
 
                 areas = areas ?? new List<AreaEntry>();
-                areas.RemoveAll(a => a == null || a.label.NullOrEmpty());
+                if (areas.RemoveAll(a => a == null || a.label.NullOrEmpty()) > 0)
+                {
+                    PersistentStore.NotifyPrunedOnLoad();
+                }
 
                 apparel = apparel ?? new StoredPolicyCategory<ApparelPolicy>();
                 food = food ?? new StoredPolicyCategory<FoodPolicy>();
@@ -51,10 +54,16 @@ namespace Boundir.NewGamePlus
                 reading = reading ?? new StoredPolicyCategory<ReadingPolicy>();
 
                 billLibrary = billLibrary ?? new List<BenchBillPreset>();
-                billLibrary.RemoveAll(p => p == null || p.benchDef == null || p.bills.Count == 0);
+                if (billLibrary.RemoveAll(p => p == null || p.benchDef == null || p.bills.Count == 0) > 0)
+                {
+                    PersistentStore.NotifyPrunedOnLoad();
+                }
 
                 billCaptures = billCaptures ?? new List<ColonyBillCapture>();
-                billCaptures.RemoveAll(c => c == null || c.benches.Count == 0);
+                if (billCaptures.RemoveAll(c => c == null || c.benches.Count == 0) > 0)
+                {
+                    PersistentStore.NotifyPrunedOnLoad();
+                }
 
                 billStamp++;
             }

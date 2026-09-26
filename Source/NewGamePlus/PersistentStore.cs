@@ -8,6 +8,15 @@ namespace Boundir.NewGamePlus
     {
         private static PersistentData data;
         private static bool loaded;
+        private static bool prunedOnLoad;
+
+        /// <summary>
+        /// Called from PostLoadInit when entries pointing to removed mods were dropped, so the load rewrites the file once and the errors do not repeat every launch.
+        /// </summary>
+        public static void NotifyPrunedOnLoad()
+        {
+            prunedOnLoad = true;
+        }
 
         public static PersistentData Data
         {
@@ -68,11 +77,34 @@ namespace Boundir.NewGamePlus
                     Scribe.ForceStop();
                     throw;
                 }
+
+                if (prunedOnLoad)
+                {
+                    Save();
+                }
             }
             catch (Exception e)
             {
-                Log.Warning("[NewGamePlus] Could not load persistent data from " + FilePath + ", starting fresh. " + e);
+                string backupPath = BackupUnreadableFile();
+                Log.Warning("[NewGamePlus] Could not load persistent data from " + FilePath + ", starting fresh."
+                    + (backupPath != null ? " The unreadable file was kept as " + backupPath + "." : "") + " " + e);
                 data = new PersistentData();
+            }
+        }
+
+        private static string BackupUnreadableFile()
+        {
+            try
+            {
+                string backupPath = Path.Combine(
+                    Path.GetDirectoryName(FilePath),
+                    "NewGamePlusData-corrupt-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".xml.bak");
+                File.Copy(FilePath, backupPath, overwrite: true);
+                return backupPath;
+            }
+            catch
+            {
+                return null;
             }
         }
 

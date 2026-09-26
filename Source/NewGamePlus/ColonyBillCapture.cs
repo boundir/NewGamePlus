@@ -93,7 +93,10 @@ namespace Boundir.NewGamePlus
                     benches = new List<BenchBillPreset>();
                 }
 
-                benches.RemoveAll(b => b == null || b.benchDef == null || b.bills.Count == 0);
+                if (benches.RemoveAll(b => b == null || b.benchDef == null || b.bills.Count == 0) > 0)
+                {
+                    PersistentStore.NotifyPrunedOnLoad();
+                }
             }
         }
     }

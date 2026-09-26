@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -8,7 +9,7 @@ namespace Boundir.NewGamePlus
     {
         public RecipeDef recipe;
         public bool suspended;
-        public float ingredientSearchRadius = 999f;
+        public float ingredientSearchRadius = Utils.UNLIMITED_BILL_RADIUS;
         public IntRange allowedSkillRange = new IntRange(0, 20);
         public bool slavesOnly;
         public bool mechsOnly;
@@ -90,11 +91,12 @@ namespace Boundir.NewGamePlus
 
             if (bill.recipe.fixedIngredientFilter != null)
             {
-                foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs)
+                List<ThingDef> allowed = record.ingredientFilter.AllowedThingDefs.ToList();
+                for (int i = 0; i < allowed.Count; i++)
                 {
-                    if (!bill.recipe.fixedIngredientFilter.Allows(def))
+                    if (!bill.recipe.fixedIngredientFilter.Allows(allowed[i]))
                     {
-                        record.ingredientFilter.SetAllow(def, allow: false);
+                        record.ingredientFilter.SetAllow(allowed[i], allow: false);
                     }
                 }
             }
@@ -154,7 +156,7 @@ namespace Boundir.NewGamePlus
         {
             Scribe_Defs.Look(ref recipe, "recipe");
             Scribe_Values.Look(ref suspended, "suspended", defaultValue: false);
-            Scribe_Values.Look(ref ingredientSearchRadius, "ingredientSearchRadius", 999f);
+            Scribe_Values.Look(ref ingredientSearchRadius, "ingredientSearchRadius", Utils.UNLIMITED_BILL_RADIUS);
             Scribe_Values.Look(ref allowedSkillRange, "allowedSkillRange", new IntRange(0, 20));
             Scribe_Values.Look(ref slavesOnly, "slavesOnly", defaultValue: false);
             Scribe_Values.Look(ref mechsOnly, "mechsOnly", defaultValue: false);
@@ -213,7 +215,10 @@ namespace Boundir.NewGamePlus
                     bills = new List<BillRecord>();
                 }
 
-                bills.RemoveAll(b => b?.recipe == null);
+                if (bills.RemoveAll(b => b?.recipe == null) > 0)
+                {
+                    PersistentStore.NotifyPrunedOnLoad();
+                }
             }
         }
     }
