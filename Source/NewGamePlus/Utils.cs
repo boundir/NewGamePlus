@@ -11,6 +11,8 @@ namespace Boundir.NewGamePlus
         public const float DEFAULT_GAP = 15f;
         public const float DEFAULT_TAB_SPACE = 34f;
 
+        public const float UNLIMITED_BILL_RADIUS = 999f;
+
         private static bool hostilityResponsePainting;
 
         public static bool DisableableButton(Rect rect, string label, bool enabled)
@@ -124,7 +126,7 @@ namespace Boundir.NewGamePlus
             Rect rectBase = list.GetRect(height: Text.LineHeight + list.verticalSpacing);
             Rect rect = new Rect(x: hostilitySelectorWidth, y: list.CurHeight, width: 24f, height: 24f);
             Rect rectLabel = new Rect(rectBase.x, list.CurHeight, width: hostilitySelectorWidth, height: Text.LineHeight + list.verticalSpacing);
-            Widgets.LabelFit(rectLabel, label.Translate() + ": " + threatResponseMode);
+            Widgets.LabelFit(rectLabel, label.Translate() + ": " + threatResponseMode.GetLabel());
 
             foreach (HostilityResponseMode hostilityResponseMode in Enum.GetValues(typeof(HostilityResponseMode)))
             {
@@ -168,6 +170,11 @@ namespace Boundir.NewGamePlus
                 rect.x += rect.width;
             }
 
+            if (!Input.GetMouseButton(0))
+            {
+                hostilityResponsePainting = false;
+            }
+
             list.Gap(gapHeight: 30f);
             Text.Font = GameFont.Tiny;
             list.ColumnWidth -= tabSpace;
@@ -181,7 +188,7 @@ namespace Boundir.NewGamePlus
 
         }
 
-        public static void DescriptiveBillSearchRadiusSlider(this Listing_Standard list, string label, string description, ref float value, float min = 0f, float max = 100f, float tabSpace = DEFAULT_TAB_SPACE)
+        public static void DescriptiveBillSearchRadiusSlider(this Listing_Standard list, string label, string description, ref float value, float min = 3f, float max = 100f, float tabSpace = DEFAULT_TAB_SPACE)
         {
             TextAnchor anchor = Text.Anchor;
 
@@ -194,7 +201,7 @@ namespace Boundir.NewGamePlus
             Widgets.Label(rect: rect, label: label.Translate());
 
             Text.Anchor = TextAnchor.MiddleRight;
-            string text = ((value == 999f) ? "Unlimited".TranslateSimple() : value.ToString("F0"));
+            string text = ((value == UNLIMITED_BILL_RADIUS) ? "Unlimited".TranslateSimple() : value.ToString("F0"));
             Widgets.Label(rect, "IngredientSearchRadius".Translate() + ": " + text);
 
             Text.Anchor = anchor;
@@ -211,7 +218,7 @@ namespace Boundir.NewGamePlus
 
             if (value >= 100f)
             {
-                value = 999f;
+                value = UNLIMITED_BILL_RADIUS;
             }
 
             list.Gap(gapHeight: DEFAULT_GAP);

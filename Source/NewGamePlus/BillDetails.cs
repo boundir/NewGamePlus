@@ -83,7 +83,7 @@ namespace Boundir.NewGamePlus
                 Add(lines, "NGP_DetailPawnRestriction", "NGP_DetailNonMechsOnly".Translate());
             }
 
-            Add(lines, "NGP_DetailSearchRadius", record.ingredientSearchRadius >= 999f
+            Add(lines, "NGP_DetailSearchRadius", record.ingredientSearchRadius >= Utils.UNLIMITED_BILL_RADIUS
                 ? "Unlimited".TranslateSimple().ToString()
                 : record.ingredientSearchRadius.ToString("F0"));
 

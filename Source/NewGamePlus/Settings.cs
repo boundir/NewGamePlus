@@ -41,7 +41,9 @@ namespace Boundir.NewGamePlus
         public MedicalCareCategory medicalCareWildlife = MedicalCareCategory.HerbalOrWorse;
 
         public bool dropOnFloor = false;
-        public float billSearchRadius = 999f;
+        public float billSearchRadius = Utils.UNLIMITED_BILL_RADIUS;
+
+        public bool captureBillsOnSave = true;
 
         public override void ExposeData()
         {
@@ -79,8 +81,9 @@ namespace Boundir.NewGamePlus
 
             // Production
             Scribe_Values.Look(value: ref dropOnFloor, label: "dropOnFloor", defaultValue: false);
-            Scribe_Values.Look(value: ref billSearchRadius, label: "billSearchRadius", defaultValue: 999f);
+            Scribe_Values.Look(value: ref billSearchRadius, label: "billSearchRadius", defaultValue: Utils.UNLIMITED_BILL_RADIUS);
             Scribe_Values.Look(value: ref outfitsHitpoints, label: "outfitsHitpoints", defaultValue: FloatRange.ZeroToOne);
+            Scribe_Values.Look(value: ref captureBillsOnSave, label: "captureBillsOnSave", defaultValue: true);
         }
 
         public void DoGeneralTab(Rect rect)
