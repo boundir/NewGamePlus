@@ -44,11 +44,25 @@ namespace Boundir.NewGamePlus
         private static readonly HashSet<BillRecord> expandedRecords = new HashSet<BillRecord>();
         private static readonly HashSet<ColonyBillCapture> expandedColonies = new HashSet<ColonyBillCapture>();
 
+        private static List<Row> cachedRows;
+        private static float cachedContentHeight;
+        private static int cachedStamp = -1;
+        private static int cachedExpandedVersion = -1;
+        private static float cachedWidth = -1f;
+        private static int expandedVersion;
+
         public static void Draw(Rect rect)
         {
             PersistentData data = PersistentStore.Data;
 
-            Rect noteRect = new Rect(rect.x, rect.y, rect.width, 40f);
+            Rect toggleRect = new Rect(rect.x, rect.y, rect.width, 24f);
+            Widgets.CheckboxLabeled(toggleRect, "NGP_CaptureOnSave".Translate(), ref NewGamePlus.settings.captureBillsOnSave);
+            if (Mouse.IsOver(toggleRect))
+            {
+                TooltipHandler.TipRegionByKey(toggleRect, "NGP_CaptureOnSaveDesc");
+            }
+
+            Rect noteRect = new Rect(rect.x, toggleRect.yMax + 4f, rect.width, 40f);
             Text.Font = GameFont.Tiny;
             GUI.color = Color.gray;
             Widgets.Label(noteRect, "NGP_BillsTabDesc".Translate());
@@ -59,19 +73,31 @@ namespace Boundir.NewGamePlus
             Rect outRect = new Rect(rect.x, noteRect.yMax + 4f, rect.width, footer.y - noteRect.yMax - 12f);
             float viewWidth = outRect.width - 16f;
 
-            List<Row> rows = BuildRows(data, viewWidth);
-            PruneExpansionState(data);
-
-            float contentHeight = 0f;
-            for (int i = 0; i < rows.Count; i++)
+            if (cachedRows == null
+                || cachedStamp != data.billStamp
+                || cachedExpandedVersion != expandedVersion
+                || cachedWidth != viewWidth)
             {
-                contentHeight += rows[i].height;
+                PruneExpansionState(data);
+
+                cachedRows = BuildRows(data, viewWidth);
+                cachedContentHeight = 0f;
+                for (int i = 0; i < cachedRows.Count; i++)
+                {
+                    cachedContentHeight += cachedRows[i].height;
+                }
+
+                cachedStamp = data.billStamp;
+                cachedExpandedVersion = expandedVersion;
+                cachedWidth = viewWidth;
             }
+
+            List<Row> rows = cachedRows;
+            float contentHeight = cachedContentHeight;
 
             Rect viewRect = new Rect(0f, 0f, viewWidth, contentHeight);
 
-            // Every button below stores its effect here instead of running it inline:
-            // mutating a list mid-draw both throws and invalidates the height above.
+            // Every button below stores its effect here instead of running it inline: mutating a list mid-draw both throws and invalidates the height above.
             Action pending = null;
 
             Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
@@ -173,8 +199,7 @@ namespace Boundir.NewGamePlus
 
                 if (expandedRecords.Contains(record))
                 {
-                    // Built once here and reused by the draw pass, so the measured and
-                    // the drawn panel are literally the same list.
+                    // Built once here and reused by the draw pass, so the measured and the drawn panel are literally the same list.
                     row.detailLines = BillDetails.Lines(record, group.benchDef, capture?.Label);
                     row.detailHeight = BillDetails.Height(row.detailLines, viewWidth - 64f);
                     row.height += row.detailHeight + BillsUI.DetailGap;
@@ -207,6 +232,48 @@ namespace Boundir.NewGamePlus
             }
 
             expandedRecords.RemoveWhere(r => !live.Contains(r));
+        }
+
+        private static void ToggleColony(ColonyBillCapture capture, bool expanded)
+        {
+            if (expanded)
+            {
+                expandedColonies.Remove(capture);
+            }
+            else
+            {
+                expandedColonies.Add(capture);
+            }
+
+            expandedVersion++;
+        }
+
+        private static void ToggleGroup(string key, bool expanded)
+        {
+            if (expanded)
+            {
+                expandedGroups.Remove(key);
+            }
+            else
+            {
+                expandedGroups.Add(key);
+            }
+
+            expandedVersion++;
+        }
+
+        private static void ToggleRecord(BillRecord record, bool expanded)
+        {
+            if (expanded)
+            {
+                expandedRecords.Remove(record);
+            }
+            else
+            {
+                expandedRecords.Add(record);
+            }
+
+            expandedVersion++;
         }
 
         private static void DrawRow(Rect rect, Row row, int stripe, ref Action pending)
@@ -250,14 +317,7 @@ namespace Boundir.NewGamePlus
             bool expanded = expandedColonies.Contains(capture);
             if (BillsUI.Expander(expandRect, expanded))
             {
-                if (expanded)
-                {
-                    expandedColonies.Remove(capture);
-                }
-                else
-                {
-                    expandedColonies.Add(capture);
-                }
+                ToggleColony(capture, expanded);
             }
 
             float buttonX = rect.xMax;
@@ -275,14 +335,7 @@ namespace Boundir.NewGamePlus
             // Clicking the label is the same as using the expander.
             if (Widgets.ButtonInvisible(labelRect))
             {
-                if (expanded)
-                {
-                    expandedColonies.Remove(capture);
-                }
-                else
-                {
-                    expandedColonies.Add(capture);
-                }
+                ToggleColony(capture, expanded);
             }
 
             if (capture.capturedAtUnix > 0L && Mouse.IsOver(labelRect))
@@ -333,14 +386,7 @@ namespace Boundir.NewGamePlus
             Rect expandRect = new Rect(rect.x + indent + 2f, rect.y + 2f, BillsUI.IconSize, BillsUI.IconSize);
             if (BillsUI.Expander(expandRect, expanded))
             {
-                if (expanded)
-                {
-                    expandedGroups.Remove(key);
-                }
-                else
-                {
-                    expandedGroups.Add(key);
-                }
+                ToggleGroup(key, expanded);
             }
 
             Rect deleteRect = new Rect(rect.xMax - 27f, rect.y + 2f, BillsUI.IconSize, BillsUI.IconSize);
@@ -353,14 +399,7 @@ namespace Boundir.NewGamePlus
 
             if (Widgets.ButtonInvisible(labelRect))
             {
-                if (expanded)
-                {
-                    expandedGroups.Remove(key);
-                }
-                else
-                {
-                    expandedGroups.Add(key);
-                }
+                ToggleGroup(key, expanded);
             }
 
             if (Widgets.ButtonImage(deleteRect, TexButton.Delete, Color.white, doMouseoverSound: true,
@@ -409,14 +448,7 @@ namespace Boundir.NewGamePlus
             Rect expandRect = new Rect(headerRect.x + 34f, headerRect.y + 4f, BillsUI.IconSize, BillsUI.IconSize);
             if (BillsUI.Expander(expandRect, expanded, "NGP_ExpandDetailsTip"))
             {
-                if (expanded)
-                {
-                    expandedRecords.Remove(record);
-                }
-                else
-                {
-                    expandedRecords.Add(record);
-                }
+                ToggleRecord(record, expanded);
             }
 
             Rect iconRect = new Rect(expandRect.xMax + 4f, headerRect.y + 4f, BillsUI.IconSize, BillsUI.IconSize);
@@ -451,21 +483,15 @@ namespace Boundir.NewGamePlus
 
             if (Widgets.ButtonInvisible(labelRect))
             {
-                if (expanded)
-                {
-                    expandedRecords.Remove(record);
-                }
-                else
-                {
-                    expandedRecords.Add(record);
-                }
+                ToggleRecord(record, expanded);
             }
 
             if (Widgets.ButtonImage(renameRect, TexButton.Rename, Color.white, doMouseoverSound: true,
                     tooltip: "NGP_RenameBillTip".Translate().ToString()))
             {
                 BillRecord toRename = record;
-                Find.WindowStack.Add(new Dialog_RenameStored<BillRecord>(toRename, delegate { toRename.labelPinned = true; }));
+                Find.WindowStack.Add(new Dialog_RenameStored<BillRecord>(toRename,
+                    delegate { toRename.labelPinned = !toRename.customName.NullOrEmpty(); }));
             }
 
             if (row.capture != null && Widgets.ButtonImage(copyRect, TexButton.Copy, Color.white, doMouseoverSound: true,
@@ -544,6 +570,7 @@ namespace Boundir.NewGamePlus
                 {
                     PersistentStore.Save();
                     expandedColonies.Add(capture);
+                    expandedVersion++;
                     Messages.Message("NGP_BillsCaptured".Translate(capture.BillCount, capture.Label),
                         MessageTypeDefOf.TaskCompletion, historical: false);
                 }

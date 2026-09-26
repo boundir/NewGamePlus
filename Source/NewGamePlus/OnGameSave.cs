@@ -9,6 +9,11 @@ namespace Boundir.NewGamePlus
         {
             try
             {
+                if (!NewGamePlus.settings.captureBillsOnSave)
+                {
+                    return;
+                }
+
                 Game game = Current.Game;
                 if (game == null)
                 {

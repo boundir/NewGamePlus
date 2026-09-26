@@ -135,6 +135,11 @@ namespace Boundir.NewGamePlus
                 group.bills.RemoveAll(r => !ReferenceEquals(r, stored[BillRecordKey.For(r)]));
             }
 
+            // An edited bill keeps its recipe and name but changes its settings key: the fresh version replaces the stored one instead of piling up next to it.
+            // A bill whose identity is gone entirely (deleted, bench demolished, or an older save of the same world) is kept.
+            HashSet<string> freshIdentities = new HashSet<string>(fresh.Values.Select(IdentityFor));
+            group.bills.RemoveAll(r => !fresh.ContainsKey(BillRecordKey.For(r)) && freshIdentities.Contains(IdentityFor(r)));
+
             foreach (KeyValuePair<string, BillRecord> item in fresh)
             {
                 if (!stored.TryGetValue(item.Key, out BillRecord existing))
@@ -148,6 +153,11 @@ namespace Boundir.NewGamePlus
                     existing.customName = item.Value.customName;
                 }
             }
+        }
+
+        private static string IdentityFor(BillRecord record)
+        {
+            return record.recipe.defName + "|" + (record.customName ?? "");
         }
 
         public static bool MatchesTable(BillRecord record, Building_WorkTable table)
@@ -231,10 +241,16 @@ namespace Boundir.NewGamePlus
             }
 
             BillAvailability result = default(BillAvailability);
+            HashSet<string> seen = new HashSet<string>();
             foreach (BillSource source in SourcesFor(table))
             {
                 foreach (BillRecord record in source.records)
                 {
+                    if (!seen.Add(BillRecordKey.For(record)))
+                    {
+                        continue;
+                    }
+
                     result.matching++;
                     if (CanImport(record, table))
                     {
@@ -299,10 +315,17 @@ namespace Boundir.NewGamePlus
             int added = 0;
             int noRoom = 0;
             List<string> skipped = new List<string>();
+            HashSet<string> importedKeys = new HashSet<string>();
 
             foreach (BillRecord record in records)
             {
                 if (record?.recipe == null)
+                {
+                    continue;
+                }
+
+                // The same bill can sit in the library and in several colony captures.
+                if (!importedKeys.Add(BillRecordKey.For(record)))
                 {
                     continue;
                 }

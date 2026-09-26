@@ -344,7 +344,8 @@ namespace Boundir.NewGamePlus
                     tooltip: "NGP_RenameBillTip".Translate().ToString()))
             {
                 BillRecord toRename = record;
-                Find.WindowStack.Add(new Dialog_RenameStored<BillRecord>(toRename, delegate { toRename.labelPinned = true; }));
+                Find.WindowStack.Add(new Dialog_RenameStored<BillRecord>(toRename,
+                    delegate { toRename.labelPinned = !toRename.customName.NullOrEmpty(); }));
             }
 
             if (row.detailLines != null)
