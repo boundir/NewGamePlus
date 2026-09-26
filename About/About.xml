@@ -3,6 +3,7 @@
     <name>New Game Plus</name>
     <author>Boundir</author>
     <packageId>Boundir.NewGamePlus</packageId>
+    <url>https://github.com/boundir/NewGamePlus</url>
     <modVersion IgnoreIfNoMatchingField="True">2.0.0</modVersion>
     <description>This mod carries your setup into every new colony, so you stop redoing the same configuration each time.
 
