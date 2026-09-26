@@ -52,6 +52,7 @@ namespace Boundir.NewGamePlus
 
             StorytellerPreset preset = PersistentStore.Data.storytellerPreset;
 
+            preset.enabled = true;
             preset.storyteller = storyteller.def;
             preset.difficulty = storyteller.difficultyDef;
             StorytellerPreset.CopyDifficulty(storyteller.difficulty, preset.difficultyValues);

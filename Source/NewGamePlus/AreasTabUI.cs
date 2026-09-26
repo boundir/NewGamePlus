@@ -90,8 +90,19 @@ namespace Boundir.NewGamePlus
 
             if (Utils.DisableableButton(captureRect, "NGP_CaptureFromGame".Translate(), Current.Game != null))
             {
-                AreaTransfer.CaptureFromGame(Current.Game);
-                PersistentStore.Save();
+                if (data.areas.Count > 0)
+                {
+                    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("NGP_ConfirmCaptureAreas".Translate(), delegate
+                    {
+                        AreaTransfer.CaptureFromGame(Current.Game);
+                        PersistentStore.Save();
+                    }));
+                }
+                else
+                {
+                    AreaTransfer.CaptureFromGame(Current.Game);
+                    PersistentStore.Save();
+                }
             }
 
             if (Utils.DisableableButton(resetRect, "NGP_ResetToVanilla".Translate(), data.areas.Count > 0))

@@ -18,6 +18,19 @@ namespace Boundir.NewGamePlus
             {
                 PolicyTransfer.ImportAll(game);
                 AreaTransfer.ImportAll(game);
+
+                foreach (Map map in game.Maps)
+                {
+                    if (!map.IsPlayerHome)
+                    {
+                        continue;
+                    }
+
+                    foreach (Pawn pawn in map.mapPawns.FreeColonists)
+                    {
+                        OnPawnJoin.Apply(pawn);
+                    }
+                }
             }
             catch (Exception e)
             {

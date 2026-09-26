@@ -7,14 +7,25 @@ namespace Boundir.NewGamePlus
     {
         public static void HostilityResponse(Pawn p, PopAdaptationEvent ev)
         {
-            if (PopAdaptationEvent.GainedColonist == ev && p.RaceProps.Humanlike && !p.Dead && p.IsColonist)
+            if (PopAdaptationEvent.GainedColonist == ev && p.IsColonist)
             {
-                if (IsPawnCompatibleWithResponseMode(p))
-                {
-                    p.playerSettings.hostilityResponse = NewGamePlus.settings.threatResponseMode;
-                }
+                Apply(p);
             }
         }
+
+        public static void Apply(Pawn pawn)
+        {
+            if (pawn == null || pawn.Dead || !pawn.RaceProps.Humanlike || pawn.playerSettings == null)
+            {
+                return;
+            }
+
+            if (IsPawnCompatibleWithResponseMode(pawn))
+            {
+                pawn.playerSettings.hostilityResponse = NewGamePlus.settings.threatResponseMode;
+            }
+        }
+
         private static bool IsPawnCompatibleWithResponseMode(Pawn pawn)
         {
             return !(pawn.WorkTagIsDisabled(WorkTags.Violent) && NewGamePlus.settings.threatResponseMode == HostilityResponseMode.Attack);

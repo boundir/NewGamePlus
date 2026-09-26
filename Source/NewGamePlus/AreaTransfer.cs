@@ -39,6 +39,7 @@ namespace Boundir.NewGamePlus
                     continue;
                 }
 
+                int dropped = 0;
                 foreach (AreaEntry entry in PersistentStore.Data.areas)
                 {
                     if (map.areaManager.GetLabeled(entry.label) != null)
@@ -48,11 +49,18 @@ namespace Boundir.NewGamePlus
 
                     if (!map.areaManager.TryMakeNewAllowed(out Area_Allowed area))
                     {
-                        break;
+                        dropped++;
+                        continue;
                     }
 
                     area.SetLabel(entry.label);
                     area.SetColor(entry.color);
+                }
+
+                if (dropped > 0)
+                {
+                    Log.Warning("[NewGamePlus] " + dropped + " stored allowed area(s) were not created on " + map
+                        + ": the game allows at most 10 allowed areas per map.");
                 }
             }
         }

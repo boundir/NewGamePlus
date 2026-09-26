@@ -147,6 +147,16 @@ namespace Boundir.NewGamePlus
             choiceListing.Gap();
             choiceListing.Label("ChooseAnomalyPlaystyle".Translate());
 
+            if (preset.difficulty == null)
+            {
+                GUI.color = ColoredText.SubtleGrayColor;
+                Text.Font = GameFont.Tiny;
+                choiceListing.Label("NGP_AnomalyNeedsDifficulty".Translate());
+                Text.Font = GameFont.Small;
+                GUI.color = Color.white;
+                return;
+            }
+
             Difficulty values = preset.difficultyValues;
 
             Scenario scenario = Find.Scenario;
